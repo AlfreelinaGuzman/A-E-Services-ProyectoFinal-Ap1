@@ -25,16 +25,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1 {
           //  usuarioTextBox.Focus();
         }
 
-        private void RegistrarseButton_Click(object sender , RoutedEventArgs e) {
-
-
-          /*  RegistroUsuario registroUsuario = new RegistroUsuario(0);  //Le paso 0 porque se registra a través del login
-            registroUsuario.Owner = this;
-
-            this.Hide();
-
-            registroUsuario.Show();     */
-
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void IniciarSesionButton_Click(object sender , RoutedEventArgs e) {

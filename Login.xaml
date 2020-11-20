@@ -15,24 +15,37 @@
             
             <StackPanel Orientation = "Horizontal" Margin="5"  >
                 <Image Source= "/Imagenes/user.png" Width="20" Height= "20" />  
-                <TextBox x:Name= "UserNameTextBox" Width="200" Text= "{Binding UserName}" Height= "30" HorizontalAlignment= "Left"  />
+                <TextBox x:Name= "UserNameTextBox" Width="220" Text= "{Binding UserName}" Height= "30" HorizontalAlignment= "Left"  />
             </StackPanel>
 
             <StackPanel Orientation= "Horizontal" Margin="5">
                 <Image Source= "/Imagenes/key.png" Width="20" Height= "20" />  
-                <TextBox x:Name= "PasswordTextBox" Width="200" Text= "{Binding Password}" Height= "30" HorizontalAlignment= "Left"  />
+                <TextBox x:Name= "PasswordTextBox" Width="220" Text= "{Binding Password}" Height= "30" HorizontalAlignment= "Left"  />
             </StackPanel>
 
-    <StackPanel Orientation= "Horizontal" Margin="40,5,5,5">
+
+        <StackPanel Orientation= "Horizontal" Margin="10,10">
+     <!-- Boton Cancelar-->
+        <Button x:Name ="AgregarButton"  Width = "100" Height = "40" Click="CancelarButton_Click">
+        <StackPanel Orientation= "Horizontal">
+        <Image Source= "/Imagenes/cancel.png" Width="30" Height= "30"/>  
+        <Label Content=" Cancelar"/>
+        </StackPanel>
+        </Button>
+        
+
+    <StackPanel Orientation= "Horizontal" Margin="5,5,5,5">
         <StackPanel Orientation= "Horizontal" Margin="10,0">
      <!-- Boton Iniciar Sesion-->
-            <Button x:Name ="IniciarSesionButton"  Width = "150" Height = "40"  Click="IniciarSesionButton_Click">
+            <Button x:Name ="IniciarSesionButton"  Width = "120" Height = "40"  Click="IniciarSesionButton_Click">
                 <StackPanel Orientation= "Horizontal" >
                     <Image Source= "/Imagenes/IniciarSesion.png" Width="20" Height= "20" HorizontalAlignment= "Left"/>  
                     <Label Content=" IniciarSesion"/>
                 </StackPanel>
                     </Button>
         </StackPanel>
+    </StackPanel>
+
     </StackPanel>
 
         </StackPanel>

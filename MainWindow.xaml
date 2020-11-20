@@ -11,8 +11,10 @@
             <Menu Height = "20" VerticalAlignment="Top">
         
                 <MenuItem Header= "Registros" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top">
-                   <MenuItem x:Name="RegistrarUsuario" Header="Registrar Usuarios " />
-                    
+                 
+                   <MenuItem x:Name="RegistrarUsuario" Header="Registrar Usuarios "/>                   
+
+
                     </MenuItem>
 
                 <MenuItem Header= "Consultas" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top">
