@@ -12,7 +12,7 @@
         
                 <MenuItem Header= "Registros" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top">
                  
-                   <MenuItem x:Name="RegistrarUsuario" Header="Registrar Usuarios "/>                   
+                   <MenuItem x:Name="RegistrarUsuario" Header="Registrar Usuarios " Click="RegistrarUsuario_Click"/>                   
 
 
                     </MenuItem>
