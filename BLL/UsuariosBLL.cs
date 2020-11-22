@@ -34,7 +34,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static bool Guardar(Usuarios Usuario)
         {
-            return Insertar(Usuario);
+             if (!Existe(Usuario.UsuarioId))
+                return Insertar(Usuario);
+            else
+                return Modificar(Usuario);
         }
 
         private static bool Insertar(Usuarios Usuario)
@@ -105,7 +108,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
         public static Usuarios Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Usuarios Usuario = new Usuarios();
+            Usuarios Usuario;
             try
             {
                 Usuario = contexto.Usuarios.Find(id);
