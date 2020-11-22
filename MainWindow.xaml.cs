@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros;
+using WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1
 {
@@ -30,6 +31,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
         private void RegistrarUsuario_Click(object sender, RoutedEventArgs e)
         {
             RegistroUsuarios RU = new RegistroUsuarios();
+            RU.Show();
+        }
+
+        private void ConsultarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaUsuarios RU = new ConsultaUsuarios();
             RU.Show();
         }
 

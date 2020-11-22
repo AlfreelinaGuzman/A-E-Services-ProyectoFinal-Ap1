@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros"
         mc:Ignorable="d"
-        Title="Menu Principal" Height="500" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Menu Principal" Height="500" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel Orientation = "Vertical" Margin ="20,10">
+        <StackPanel Orientation = "Vertical" Margin ="30,30">
             <StackPanel Orientation ="Vertical">
                 
 
                 <StackPanel Orientation ="Horizontal">
                     <Label Content="UsuarioId" />
                     <TextBox x:Name="UsuarioIdTextBox"  Width="80" Height="20" Text="{Binding UsuarioId}" Margin="10,0"/>
-                    <Button x:Name="BuscarButton" Margin="10,0">
+                    <Button x:Name="BuscarButton" Margin="20,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Buscar"/>
                         </StackPanel>
@@ -30,47 +30,70 @@
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
                     <Label Content="Nombres" />
-                    <TextBox x:Name="NombresTextBox"  Width="150" Height="20" Text="{Binding Nombres}" Margin="10,0,10,0"/>
+                    <TextBox x:Name="NombresTextBox"  Width="162" Height="20" Text="{Binding Nombres}" Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
                     <Label Content="Apellidos" />
-                    <TextBox x:Name="ApellidosTextBox"  Width="150" Height="20" Text="{Binding Apellidos}" Margin="10,0,10,0"/>
+                    <TextBox x:Name="ApellidosTextBox"  Width="169" Height="20" Text="{Binding Apellidos}" Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
-                    <Label Content="NombreUsuario" />
-                    <TextBox x:Name="NombreUsuarioTextBox"  Width="150" Height="20" Text="{Binding NombreUsuario}" Margin="10,0,10,0"/>
+                    <Label Content="Usuario" />
+                    <TextBox x:Name="NombreUsuarioTextBox"  Width="180" Height="20" Text="{Binding NombreUsuario}" Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
                     <Label Content="Contraseña" />
-                    <TextBox x:Name="ContraseñaTextBox"  Width="150" Height="20" Text="{Binding Contraseña}" Margin="10,0,10,0"/>
+                    <PasswordBox x:Name="ContraseñaTextBox"  Width="157" Height="20"  Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
-                    <Label Content="Verificar Contraseña" />
-                    <TextBox x:Name="VerificarContraseñaTextBox"  Width="150" Height="20"  Margin="10,0,10,0"/>
+                    <Label Content="Verif Ctr" />
+                    <PasswordBox x:Name="VerificarContraseñaTextBox"  Width="175" Height="20"  Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
                     <Label Content="Telefono" />
-                    <TextBox x:Name="TelefonoTextBox"  Width="150" Height="20" Text="{Binding Telefono}" Margin="90,0,10,0"/>
+                    <TextBox x:Name="TelefonoTextBox"  Width="174" Height="20" Text="{Binding Telefono}" Margin="10,0,10,0"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation = "Vertical" Margin="0,10">
                 <StackPanel Orientation ="Horizontal">
-                    <Label Content="Correo" />
-                    <TextBox x:Name="CorreoTextBox"  Width="150" Height="20" Text="{Binding Correo}" Margin="90,0,10,0"/>
+                    <Label Content="Correo"/>
+                    <TextBox x:Name="CorreoTextBox"  Width="185" Height="20" Text="{Binding Correo}" Margin="10,0,10,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Margin="0,20,0,0">
+                    <Button x:Name="NuevoButton"  HorizontalAlignment="Left" Margin="0,0,20,0" Click="NuevoButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nuevo"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="GuardarButton" HorizontalAlignment="Center" Margin="20,0" Click="GuardarButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Guardar"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="EliminarButton" HorizontalAlignment="Right" Margin="20,0,0,0" Click="EliminarButton_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Eliminar"/>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
             </StackPanel>
 
