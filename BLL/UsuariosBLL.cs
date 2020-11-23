@@ -46,7 +46,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool esOk = false;
             try
             {
-                Usuario.Contraseña = GetSHA256(Usuario.Contraseña);
                 if (contexto.Usuarios.Add(Usuario) != null) { esOk = (contexto.SaveChanges() > 0); }
             }
             catch (Exception)
@@ -64,7 +63,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
         {
             Contexto contexto = new Contexto();
             bool esOk = false;
-            Usuario.Contraseña = GetSHA256(Usuario.Contraseña);
             try
             {
                 contexto.Entry(Usuario).State = EntityState.Modified;
@@ -166,39 +164,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Lista;
         }
 
-        public static bool Validar(string nombreusuario, string Contraseña)
-        {
-            bool esOk = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                var esValido = from usuario in contexto.Usuarios
-                               where usuario.NombreUsuario == nombreusuario
-                               && usuario.Contraseña == GetSHA256(Contraseña)
-                               select usuario;
-                if (esValido.Count() > 0) { esOk = true; }
-                else { esOk = false; }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return esOk;
-        }
-
-        public static string GetSHA256(string str)
-        {
-            SHA256 sha256 = SHA256Managed.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = sha256.ComputeHash(encoding.GetBytes(str));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
-        }
+        
     }
 }

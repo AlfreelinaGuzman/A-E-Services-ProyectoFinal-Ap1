@@ -9,17 +9,20 @@
 
     <Grid>
        <StackPanel Orientation= "Vertical" Margin="80,10,10,10">
+
+       <!--Imagen del Login-->
             <StackPanel Orientation= "Horizontal" Margin="40,0">
                 <Image Source= "/Imagenes/CircleUser.png" Width="150" Height= "200" />  
             </StackPanel>
             
+        <!--Nombre Usuario-->
             <StackPanel Orientation = "Horizontal" Margin="5"  >
                 <Image Source= "/Imagenes/user.png" Width="20" Height= "20" />  
                 <TextBox x:Name= "UserNameTextBox" Width="220" Text= "{Binding UserName}" Height= "30" HorizontalAlignment= "Left"  />
             </StackPanel>
 
             
-
+        <!--Contraseña-->
             <StackPanel Orientation= "Horizontal" Margin="5">
                 <Image Source= "/Imagenes/key.png" Width="20" Height= "20" />  
                 <PasswordBox x:Name= "PasswordTextBox" Width="220" Height= "30" HorizontalAlignment= "Left"  />

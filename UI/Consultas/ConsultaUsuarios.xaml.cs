@@ -24,11 +24,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
     /// </summary>
     public partial class ConsultaUsuarios : Window
     {
+        
         public ConsultaUsuarios()
         {
             InitializeComponent();
             
         }
+
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -137,4 +139,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             DatosDataGrid.ItemsSource = listado;
         }
     }
+
+
 }

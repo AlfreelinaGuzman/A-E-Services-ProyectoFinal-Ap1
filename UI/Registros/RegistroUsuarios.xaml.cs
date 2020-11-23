@@ -61,7 +61,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             this.DataContext = usuarios;
         }
 
-        //detalle
+        
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e){
             Limpiar();
