@@ -18,9 +18,11 @@
                 <TextBox x:Name= "UserNameTextBox" Width="220" Text= "{Binding UserName}" Height= "30" HorizontalAlignment= "Left"  />
             </StackPanel>
 
+            
+
             <StackPanel Orientation= "Horizontal" Margin="5">
                 <Image Source= "/Imagenes/key.png" Width="20" Height= "20" />  
-                <TextBox x:Name= "PasswordTextBox" Width="220" Text= "{Binding Password}" Height= "30" HorizontalAlignment= "Left"  />
+                <PasswordBox x:Name= "PasswordTextBox" Width="220" Height= "30" HorizontalAlignment= "Left"  />
             </StackPanel>
 
 

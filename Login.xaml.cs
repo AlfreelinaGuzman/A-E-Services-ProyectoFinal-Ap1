@@ -38,7 +38,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1 {
 
         private void IniciarSesionButton_Click(object sender , RoutedEventArgs e) {
 
-          if (string.IsNullOrWhiteSpace(UserNameTextBox.Text) || string.IsNullOrWhiteSpace(PasswordTextBox.Text)) {
+          if (string.IsNullOrWhiteSpace(UserNameTextBox.Text) || string.IsNullOrWhiteSpace(PasswordTextBox.Password)) {
                 MessageBox.Show("Ingrese sus datos de login");
                 return;
             } else {
@@ -52,7 +52,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1 {
                // string ClaveEncriptada = UsuariosBLL.GetSHA256(PasswordTextBox.Text);
                     //        if (usuariosList[0].Contraseña == ClaveEncriptada) 
 
-                if (usuariosList[0].Contraseña == PasswordTextBox.Text) {
+                if (usuariosList[0].Contraseña == PasswordTextBox.Password) {
                     
                     this.Hide();
                     MainWindow menuPrincipal = new MainWindow();
@@ -61,6 +61,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1 {
 
                 } else {
                     MessageBox.Show("Contraseña incorrecta.");
+                    this.Show();
                 }
 
             } else {

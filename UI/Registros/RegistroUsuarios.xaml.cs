@@ -28,6 +28,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         public RegistroUsuarios()
         {
             InitializeComponent();
+            this.DataContext=usuarios;
             
         }
 
@@ -55,15 +56,19 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             else
             {
                 Limpiar();
+
             }
             this.DataContext = usuarios;
         }
+
+        //detalle
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e){
             Limpiar();
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e){
+            usuarios.Contraseña=ContraseñaTextBox.Password;
             var paso = UsuariosBLL.Guardar(usuarios);
             if (paso){
                 MessageBox.Show("Guardado Correctamente!");
