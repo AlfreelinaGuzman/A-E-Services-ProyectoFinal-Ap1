@@ -49,7 +49,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1 {
             usuariosList = UsuariosBLL.GetList(u => u.NombreUsuario == UserNameTextBox.Text);
             if(usuariosList.Count == 1) {
                 
-               // string ClaveEncriptada = UsuariosBLL.GetSHA256(PasswordTextBox.Text);
+               // string ClaveEncriptada = UsuariosBLL.GetSHA256(PasswordTextBox.Password);
                     //        if (usuariosList[0].Contraseña == ClaveEncriptada) 
 
                 if (usuariosList[0].Contraseña == PasswordTextBox.Password) {

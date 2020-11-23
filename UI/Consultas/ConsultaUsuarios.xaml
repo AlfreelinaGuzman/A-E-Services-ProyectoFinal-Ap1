@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta" Height="450" Width="800">
+        Title="Consulta Usuario" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -27,16 +27,21 @@
                 <StackPanel Margin="5,0">
                     <Label Content="Critero:"/>
                     <TextBox x:Name="CriterioTextBox" Width="100"/>
-
                 </StackPanel>
 
-                <Button x:Name="BuscarButton" Content="Buscar" Height="34" Width="93" Click="ConsultarButton_Click" >
-                    
+                <StackPanel Margin="5,14"> 
+                <Button x:Name="BuscarButton" Height="30" Width="93" Click="ConsultarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source= "/Imagenes/Buscar.png" Width="20" Height= "20"/> 
+                        <Label Content="Buscar"/>
+
+                    </StackPanel> 
                 </Button>
+                </StackPanel>
 
             </StackPanel>
             
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527" HorizontalAlignment="Left"/>
+                <DataGrid x:Name="DatosDataGrid" Height="300" Width="700" HorizontalAlignment="Left"/>
             
         </StackPanel>
     </Grid>
