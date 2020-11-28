@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -34,10 +35,42 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             RU.Show();
         }
 
+        private void RegistrarArticulo_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroArticulos RU = new RegistroArticulos();
+            RU.Show();
+        }
+
+        private void RegistrarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroClientes RU = new RegistroClientes();
+            RU.Show();
+        }
+
+         private void RegistrarCompra_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroCompras RU = new RegistroCompras();
+            RU.Show();
+        }
+
+        private void RegistrarVenta_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroVentas RU = new RegistroVentas();
+            RU.Show();
+        }
+
         private void ConsultarUsuario_Click(object sender, RoutedEventArgs e)
         {
             ConsultaUsuarios RU = new ConsultaUsuarios();
             RU.Show();
+        }
+
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            
+            this.Close();
+            // If data is dirty, notify user and ask for a response
+            
         }
 
     }

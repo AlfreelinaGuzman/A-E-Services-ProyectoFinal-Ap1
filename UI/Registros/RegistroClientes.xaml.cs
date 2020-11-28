@@ -23,13 +23,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
     /// <summary>
     /// Interaction logic for RegistroUsuario.xaml
     /// </summary>
-    public partial class RegistroUsuarios : Window
+    public partial class RegistroClientes : Window
     {
-        private Usuarios usuarios = new Usuarios();
-        public RegistroUsuarios()
+        private Clientes Cliente = new Clientes();
+        public RegistroClientes()
         {
             InitializeComponent();
-            this.DataContext=usuarios;
+            this.DataContext=Cliente;
             
         }
 
@@ -37,7 +37,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         { 
             bool Validado = true;  
 
-            if (UsuarioIdTextBox.Text.Length == 0) 
+            if (ClienteIdTextBox.Text.Length == 0) 
             {
                  Validado = false; 
                  MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -46,20 +46,20 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         }
 
         private void Limpiar(){
-            this.usuarios = new Usuarios();
-            this.DataContext = usuarios;
+            this.Cliente = new Clientes();
+            this.DataContext = Cliente;
         }
 
         private void BuscarButton_click(object sender, RoutedEventArgs e){
-            var encontrado = UsuariosBLL.Buscar(Convert.ToInt32(UsuarioIdTextBox.Text));
+            var encontrado = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
             if(encontrado!= null)
-                usuarios = encontrado;
+                Cliente = encontrado;
             else
             {
                 Limpiar();
 
             }
-            this.DataContext = usuarios;
+            this.DataContext = Cliente;
         }
 
         
@@ -69,8 +69,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e){
-            usuarios.Contraseña=ContraseñaTextBox.Password;
-            var paso = UsuariosBLL.Guardar(usuarios);
+            var paso = ClientesBLL.Guardar(Cliente);
             if (paso){
                 MessageBox.Show("Guardado Correctamente!");
                 Limpiar();
@@ -83,7 +82,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e){
 
-            if(UsuariosBLL.Eliminar(Convert.ToInt32(UsuarioIdTextBox.Text))){
+            if(ClientesBLL.Eliminar(Convert.ToInt32(ClienteIdTextBox.Text))){
                 MessageBox.Show("Se elimino correctamente!");
                 Limpiar();
             }
