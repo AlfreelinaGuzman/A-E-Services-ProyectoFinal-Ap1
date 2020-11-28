@@ -108,7 +108,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         void CargarSexo()
         {
-            if(Cliente.Sexo==null)
+            if(Cliente.ClienteId==0)
             {
                 if (MasculinoradioButton.IsChecked==true)
                 {
