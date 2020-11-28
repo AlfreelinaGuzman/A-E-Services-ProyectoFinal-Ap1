@@ -30,6 +30,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         {
             InitializeComponent();
             this.DataContext=Cliente;
+
             
         }
 
@@ -54,12 +55,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             var encontrado = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
             if(encontrado!= null)
                 Cliente = encontrado;
+                
             else
             {
                 Limpiar();
 
             }
             this.DataContext = Cliente;
+            CargarSexo();
         }
 
         
@@ -69,6 +72,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e){
+            if (!Validar())
+                return;
+            CargarSexo();
             var paso = ClientesBLL.Guardar(Cliente);
             if (paso){
                 MessageBox.Show("Guardado Correctamente!");
@@ -98,6 +104,37 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
             // If data is dirty, notify user and ask for a response
             
+        }
+
+        void CargarSexo()
+        {
+            if(Cliente.Sexo==null)
+            {
+                if (MasculinoradioButton.IsChecked==true)
+                {
+                    Cliente.Sexo = 'M';
+                }
+                if (FemeninoradioButton.IsChecked== true)
+                {
+                    Cliente.Sexo = 'F';
+                }
+            }
+            else
+            {
+                if (Cliente.Sexo == 'F')
+                {
+                    FemeninoradioButton.IsChecked = true;
+                    MasculinoradioButton.IsChecked = false;
+
+
+
+                }
+                else
+                {
+                    FemeninoradioButton.IsChecked = false;
+                    MasculinoradioButton.IsChecked = true;
+                }
+            }
         }
 
     }
