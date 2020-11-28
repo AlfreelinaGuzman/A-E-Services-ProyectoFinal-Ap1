@@ -43,8 +43,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
 
         private void RegistrarCliente_Click(object sender, RoutedEventArgs e)
         {
-            RegistroClientes RU = new RegistroClientes();
-            RU.Show();
+            RegistroClientes ventana = new RegistroClientes();
+            ventana.Show();
         }
 
          private void RegistrarCompra_Click(object sender, RoutedEventArgs e)
@@ -53,10 +53,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             RU.Show();
         }
 
-        private void RegistrarVenta_Click(object sender, RoutedEventArgs e)
+         private void RegistrarProveedor_Click(object sender, RoutedEventArgs e)
         {
-            RegistroVentas RU = new RegistroVentas();
-            RU.Show();
+            RegistroProveedores Ventana = new RegistroProveedores();
+            Ventana.Show();
         }
 
         private void ConsultarUsuario_Click(object sender, RoutedEventArgs e)

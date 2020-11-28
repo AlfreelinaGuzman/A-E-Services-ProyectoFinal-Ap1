@@ -12,7 +12,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.DAL
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Articulos> Articulos { get; set; }
         public DbSet<Compras> Compras { get; set; }
-        public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<Proveedores> Proveedores {get; set;}
+
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -20,42 +20,37 @@ using WaoCellDominicana_ProyectoFinal_Ap1.UI;
 namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RegistroClientes.xaml
+    /// Interaction logic for RegistroProveedores.xaml
     /// </summary>
-    public partial class RegistroClientes : Window
+    public partial class RegistroProveedores : Window
     {
-        private Clientes clientes = new Clientes ();
-        public RegistroClientes()
+        private Proveedores proveedores = new Proveedores ();
+        public RegistroProveedores()
         {
            InitializeComponent();
-/*
-            TipoTareaComboBox.ItemsSource = TareasBLL.GetList();
-            TipoTareaComboBox.SelectedValuePath = "TareaID";
-            TipoTareaComboBox.DisplayMemberPath = "TipoTarea";
-*/
         }
 
         private void Limpiar()
         {
-            clientes= new Clientes();
-            this.DataContext = clientes;
+            proveedores= new Proveedores();
+            this.DataContext = proveedores;
         }
 
            private void Actualizar() 
         {
             this.DataContext = null;
-            this.DataContext = clientes;
+            this.DataContext = proveedores;
         }
 
         private bool ExisteDB(){
-            clientes= ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
-            return (clientes != null);
+            proveedores= ProveedoresBLL.Buscar(Convert.ToInt32(ProveedorIdTextBox.Text));
+            return (proveedores != null);
         }
         private bool Validar() 
         { 
             bool Validado = true;  
 
-            if (ClienteIdTextBox.Text.Length == 0) 
+            if (ProveedorIdTextBox.Text.Length == 0) 
             {
                  Validado = false; 
                  MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -66,7 +61,7 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
            /// bool paso = false;
-            if (ClientesBLL.Guardar(clientes))
+            if (ProveedoresBLL.Guardar(proveedores))
             {
                 Limpiar();
                 MessageBox.Show("Guardado!", "Exito",
@@ -80,14 +75,14 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            id = Convert.ToInt32(ClienteIdTextBox.Text);
+            id = Convert.ToInt32(ProveedorIdTextBox.Text);
 
             Limpiar();
 
-            if(ClientesBLL.Eliminar(id))
+            if(ProveedoresBLL.Eliminar(id))
                 MessageBox.Show("Se elimino Correctamente");
             else
-                MessageBox.Show(ClienteIdTextBox.Text,"No se pudo eliminar!");
+                MessageBox.Show(ProveedorIdTextBox.Text,"No se pudo eliminar!");
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -96,13 +91,13 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Clientes anterior = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
+            Proveedores anterior = ProveedoresBLL.Buscar(Convert.ToInt32(ProveedorIdTextBox.Text));
 
             if(anterior != null)
             {
-                clientes = anterior;
+                proveedores = anterior;
                 this.DataContext = null;
-                this.DataContext = clientes;
+                this.DataContext = proveedores;
             }
             else
             {
@@ -112,7 +107,7 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         
         private bool Existe()
         {
-            Clientes esValido = ClientesBLL.Buscar(clientes.ClienteId);
+            Proveedores esValido = ProveedoresBLL.Buscar(proveedores.ProveedorId);
 
             return (esValido != null);
         }

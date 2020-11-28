@@ -1,24 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
+using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Linq;
-using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
-using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
-    public class ClientesBLL
+    public class ProveedoresBLL
     {
-
-        public static bool Guardar(Clientes clientes)
+        
+          public static bool Guardar(Proveedores proveedores)
         {
-            if (!Existe(clientes.ClienteId))
-                return Insertar(clientes);
+            if (!Existe(proveedores.ProveedorId))
+                return Insertar(proveedores);
             else
-                return Modificar(clientes);
+                return Modificar(proveedores);
         }
 
         private static bool Existe(int id)
@@ -26,7 +26,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool existe;
             Contexto contexto = new Contexto();
             try{
-                existe = contexto.Clientes.Any(o => o.ClienteId== id);
+                existe = contexto.Proveedores.Any(o => o.ProveedorId== id);
             }
             catch(Exception){
                 throw;
@@ -37,13 +37,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return existe;
         }
         
-        private static bool Insertar(Clientes clientes)
+        private static bool Insertar(Proveedores proveedores)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
             try
             {
-                contexto.Clientes.Add(clientes);
+                contexto.Proveedores.Add(proveedores);
                 paso = contexto.SaveChanges() > 0;
                 
             }
@@ -58,11 +58,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return paso;
         }
 
-        public static bool Modificar(Clientes clientes){
+        public static bool Modificar(Proveedores proveedores){
             bool Modificado = false;
             Contexto contexto = new Contexto();
-            try{
-                contexto.Entry(clientes).State = EntityState.Modified;
+
+             try{
+                contexto.Entry(proveedores).State = EntityState.Modified;
                 Modificado = (contexto.SaveChanges()>0);
             }
             catch(Exception){
@@ -71,6 +72,23 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             } finally{
                 contexto.Dispose();
             }
+
+           /* try{
+                contexto.Database.ExecuteSqlRaw($"Delete FROM OrdenesDetalle Where OrdenID = {suplidores.SuplidorID}");
+                foreach(var anterior in suplidores.OrdenesDetalle)
+                {
+                    contexto.Entry(anterior).State =EntityState.Added;
+                }
+                contexto.Entry(suplidores).State = EntityState.Modified;
+                Modificado = (contexto.SaveChanges()>0);
+            }
+            catch(Exception){
+                throw;
+               
+            } finally{
+                contexto.Dispose();
+            }*/
+
             return Modificado;
         }
 
@@ -78,8 +96,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool Eliminado = false;
             Contexto contexto = new Contexto();
             try{
-                var clientes = contexto.Clientes.Find(id);
-                contexto.Entry(clientes).State = EntityState.Deleted;
+                var proveedores = contexto.Proveedores.Find(id);
+                contexto.Entry(proveedores).State = EntityState.Deleted;
                 Eliminado = contexto.SaveChanges()>0;
             }
 
@@ -92,11 +110,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Eliminado;
         }
 
-        public static Clientes Buscar(int id){
-            Clientes clientes;
+        public static Proveedores Buscar(int id){
+            Proveedores proveedores = new Proveedores();
             Contexto contexto = new Contexto();
             try{
-                clientes = contexto.Clientes.Where(p => p.ClienteId  == id).SingleOrDefault();
+                proveedores = contexto.Proveedores.Find();
             }
             catch(Exception){
                 throw;
@@ -104,17 +122,17 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             } finally{
                 contexto.Dispose();
             }
-            return clientes;
+            return proveedores;
         }
-
-    public static List <Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
+        
+        public static List <Proveedores> GetList(Expression<Func<Proveedores, bool>> proveedores)
         {
-            List<Clientes> Lista = new List<Clientes>();
+            List<Proveedores> Lista = new List<Proveedores>();
             Contexto contexto = new Contexto();
 
             try
             {
-                Lista = contexto.Clientes.Where(clientes).ToList();
+                Lista = contexto.Proveedores.Where(proveedores).ToList();
             }
             catch (Exception)
             {
@@ -127,14 +145,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Lista;
     }
 
-    public static List <Clientes> GetList()
+    public static List <Proveedores> GetList()
         {
-            List<Clientes> Lista = new List<Clientes>();
+            List<Proveedores> Lista = new List<Proveedores>();
             Contexto contexto = new Contexto();
 
             try
             {
-                Lista = contexto.Clientes.ToList();
+                Lista = contexto.Proveedores.ToList();
             }
             catch (Exception)
             {
