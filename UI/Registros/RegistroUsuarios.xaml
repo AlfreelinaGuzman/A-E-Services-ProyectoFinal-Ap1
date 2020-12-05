@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros"
         mc:Ignorable="d"
         Closing="DataWindow_Closing"
-        Title="Registrar Usuario" Height="540" Width="380" >
+        Title="Registrar Usuario" Height="540" Width="380" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation = "Vertical" Margin ="30,30" >
             <StackPanel Orientation ="Vertical">
@@ -58,13 +58,13 @@
 
 
             <StackPanel Orientation ="Vertical">
-                <Label Content="Contraseña" />
-                <PasswordBox x:Name="ContraseñaTextBox" HorizontalAlignment="Left"  Width="300" Height="20"  Margin="0,0,0,0"/>
+                <Label Content="Password" />
+                <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Left"  Width="300" Height="20"  Margin="0,0,0,0"/>
             </StackPanel>
 
 
             <StackPanel Orientation ="Vertical">
-                <Label Content="Verificar Contraseña" />
+                <Label Content="Verificar Password" />
                 <PasswordBox x:Name="VerificarContraseñaTextBox" HorizontalAlignment="Left" Width="300" Height="20"  Margin="0,0,0,0"/>
             </StackPanel>
 

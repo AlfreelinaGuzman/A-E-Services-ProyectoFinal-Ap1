@@ -17,6 +17,5 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public decimal Costo { get; set; }
         public decimal Minimo { get; set; }
         public decimal Garantia { get; set; }
-
     }
 }

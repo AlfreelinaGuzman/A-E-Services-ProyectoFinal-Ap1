@@ -20,39 +20,45 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 {
-    /// <summary>
-    /// Interaction logic for RegistroUsuario.xaml
-    /// </summary>
     public partial class RegistroArticulos : Window
     {
         private Articulos Articulo = new Articulos();
         public RegistroArticulos()
         {
             InitializeComponent();
-            this.DataContext=Articulo;
-            
+            this.DataContext = Articulo;
+
+            MarcaComboBox.ItemsSource = MarcasBLL.GetMarcas();
+            MarcaComboBox.SelectedValuePath = "MarcaId";
+            MarcaComboBox.DisplayMemberPath = "Marca";
+
+            ModeloComboBox.ItemsSource = ModelosBLL.GetModelos();
+            ModeloComboBox.SelectedValuePath = "ModeloId";
+            ModeloComboBox.DisplayMemberPath = "Modelo";
         }
 
-        private bool Validar() 
-        { 
-            bool Validado = true;  
+        private bool Validar()
+        {
+            bool Validado = true;
 
-            if (ArticuloIdTextBox.Text.Length == 0) 
+            if (ArticuloIdTextBox.Text.Length == 0)
             {
-                 Validado = false; 
-                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            return Validado; 
+            return Validado;
         }
 
-        private void Limpiar(){
+        private void Limpiar()
+        {
             this.Articulo = new Articulos();
             this.DataContext = Articulo;
         }
 
-        private void BuscarButton_click(object sender, RoutedEventArgs e){
+        private void BuscarButton_click(object sender, RoutedEventArgs e)
+        {
             var encontrado = ArticulosBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
-            if(encontrado!= null)
+            if (encontrado != null)
                 Articulo = encontrado;
             else
             {
@@ -62,15 +68,18 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             this.DataContext = Articulo;
         }
 
-        
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e){
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
             Limpiar();
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e){
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
             var paso = ArticulosBLL.Guardar(Articulo);
-            if (paso){
+            if (paso)
+            {
                 MessageBox.Show("Guardado Correctamente!");
                 Limpiar();
             }
@@ -80,9 +89,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
         }
 
-        private void EliminarButton_Click(object sender, RoutedEventArgs e){
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
 
-            if(ArticulosBLL.Eliminar(Convert.ToInt32(ArticuloIdTextBox.Text))){
+            if (ArticulosBLL.Eliminar(Convert.ToInt32(ArticuloIdTextBox.Text)))
+            {
                 MessageBox.Show("Se elimino correctamente!");
                 Limpiar();
             }
@@ -97,7 +108,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             MessageBox.Show("Closing called");
 
             // If data is dirty, notify user and ask for a response
-            
+
         }
 
     }

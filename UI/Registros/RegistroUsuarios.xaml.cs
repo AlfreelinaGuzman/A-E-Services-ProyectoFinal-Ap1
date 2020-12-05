@@ -1,5 +1,4 @@
 using WaoCellDominicana_ProyectoFinal_Ap1.BLL;
-using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -20,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 {
-    /// <summary>
-    /// Interaction logic for RegistroUsuario.xaml
-    /// </summary>
     public partial class RegistroUsuarios : Window
     {
         private Usuarios usuarios = new Usuarios();
@@ -69,7 +65,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e){
-            usuarios.Contraseña=ContraseñaTextBox.Password;
+            usuarios.Password=PasswordTextBox.Password;
             var paso = UsuariosBLL.Guardar(usuarios);
             if (paso){
                 MessageBox.Show("Guardado Correctamente!");

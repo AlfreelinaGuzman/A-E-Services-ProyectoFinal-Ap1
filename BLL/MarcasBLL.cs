@@ -12,7 +12,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class MarcasBLL
     {
-        public static List <Marcas> GetList(Expression<Func<Marcas, bool>> marcas)
+        public static List<Marcas> GetList(Expression<Func<Marcas, bool>> marcas)
         {
             List<Marcas> Lista = new List<Marcas>();
             Contexto contexto = new Contexto();
@@ -30,9 +30,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
                 contexto.Dispose();
             }
             return Lista;
-    }
+        }
 
-    public static List <Marcas> GetList()
+        public static List<Marcas> GetMarcas()
         {
             List<Marcas> Lista = new List<Marcas>();
             Contexto contexto = new Contexto();

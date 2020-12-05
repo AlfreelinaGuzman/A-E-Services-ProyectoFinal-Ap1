@@ -34,7 +34,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static bool Guardar(Articulos Articulo)
         {
-             if (!Existe(Articulo.ArticuloId))
+            if (!Existe(Articulo.ArticuloId))
                 return Insertar(Articulo);
             else
                 return Modificar(Articulo);
@@ -126,7 +126,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Articulo;
         }
 
-        public static List<Articulos> GetList()
+        public static List<Articulos> GetArticulos()
         {
             Contexto contexto = new Contexto();
             List<Articulos> Lista = new List<Articulos>();
@@ -164,6 +164,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Lista;
         }
 
-        
+
     }
 }

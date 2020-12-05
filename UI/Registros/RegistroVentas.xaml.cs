@@ -32,10 +32,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             this.DataContext = ventas;
 
             
-            ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetList();
+            ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
             ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
 
+            ClienteIdComboBox.ItemsSource = ClientesBLL.GetClientes();
+            ClienteIdComboBox.SelectedValuePath = "ClienteId";
+            ClienteIdComboBox.DisplayMemberPath = "ClienteId";
+
+            
 
         }
 

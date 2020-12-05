@@ -18,9 +18,6 @@ using WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -47,20 +44,20 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             ventana.Show();
         }
 
-         private void RegistrarCompra_Click(object sender, RoutedEventArgs e)
+        private void RegistrarCompra_Click(object sender, RoutedEventArgs e)
         {
             RegistroCompras RU = new RegistroCompras();
             RU.Show();
         }
 
-         private void RegistrarProveedor_Click(object sender, RoutedEventArgs e)
+        private void RegistrarProveedor_Click(object sender, RoutedEventArgs e)
         {
             RegistroProveedores Ventana = new RegistroProveedores();
             Ventana.Show();
         }
         //RegistrarVentas_Click
 
-           private void RegistrarVentas_Click(object sender, RoutedEventArgs e)
+        private void RegistrarVentas_Click(object sender, RoutedEventArgs e)
         {
             RegistroVentas Ventana = new RegistroVentas();
             Ventana.Show();
@@ -71,14 +68,16 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             ConsultaUsuarios RU = new ConsultaUsuarios();
             RU.Show();
         }
-
+        private void ConsultarVentas_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaVentas Ventana = new ConsultaVentas();
+            Ventana.Show();
+        }
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
-            
+
             this.Close();
             // If data is dirty, notify user and ask for a response
-            
         }
-
     }
 }

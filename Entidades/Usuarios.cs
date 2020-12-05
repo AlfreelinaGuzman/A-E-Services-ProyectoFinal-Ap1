@@ -14,9 +14,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string NombreUsuario { get; set; }
-        public string Contraseña { get; set; }
+        public string Password { get; set; }
         public string Telefono { get; set; }
         public string Correo { get; set; }
-
     }
 }

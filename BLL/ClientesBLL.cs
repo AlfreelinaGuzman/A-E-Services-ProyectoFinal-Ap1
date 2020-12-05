@@ -25,18 +25,22 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
         {
             bool existe;
             Contexto contexto = new Contexto();
-            try{
-                existe = contexto.Clientes.Any(o => o.ClienteId== id);
+            try
+            {
+                existe = contexto.Clientes.Any(o => o.ClienteId == id);
             }
-            catch(Exception){
+            catch (Exception)
+            {
                 throw;
 
-            } finally{
+            }
+            finally
+            {
                 contexto.Dispose();
             }
             return existe;
         }
-        
+
         private static bool Insertar(Clientes clientes)
         {
             bool paso = false;
@@ -45,7 +49,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Clientes.Add(clientes);
                 paso = contexto.SaveChanges() > 0;
-                
+
             }
             catch (Exception)
             {
@@ -58,56 +62,71 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return paso;
         }
 
-        public static bool Modificar(Clientes clientes){
+        public static bool Modificar(Clientes clientes)
+        {
             bool Modificado = false;
             Contexto contexto = new Contexto();
-            try{
+            try
+            {
                 contexto.Entry(clientes).State = EntityState.Modified;
-                Modificado = (contexto.SaveChanges()>0);
+                Modificado = (contexto.SaveChanges() > 0);
             }
-            catch(Exception){
+            catch (Exception)
+            {
                 throw;
-               
-            } finally{
+
+            }
+            finally
+            {
                 contexto.Dispose();
             }
             return Modificado;
         }
 
-        public static bool Eliminar(int id){
+        public static bool Eliminar(int id)
+        {
             bool Eliminado = false;
             Contexto contexto = new Contexto();
-            try{
+            try
+            {
                 var clientes = contexto.Clientes.Find(id);
                 contexto.Entry(clientes).State = EntityState.Deleted;
-                Eliminado = contexto.SaveChanges()>0;
+                Eliminado = contexto.SaveChanges() > 0;
             }
 
-            catch(Exception){
+            catch (Exception)
+            {
                 throw;
-               
-            } finally{
+
+            }
+            finally
+            {
                 contexto.Dispose();
             }
             return Eliminado;
         }
 
-        public static Clientes Buscar(int id){
+        public static Clientes Buscar(int id)
+        {
             Clientes clientes;
             Contexto contexto = new Contexto();
-            try{
-                clientes = contexto.Clientes.Where(p => p.ClienteId  == id).SingleOrDefault();
+            try
+            {
+                clientes = contexto.Clientes.Where(p => p.ClienteId == id).SingleOrDefault();
             }
-            catch(Exception){
+            catch (Exception)
+            {
                 throw;
-               
-            } finally{
+
+            }
+            finally
+            {
                 contexto.Dispose();
             }
             return clientes;
         }
 
-    public static List <Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
+        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
         {
             List<Clientes> Lista = new List<Clientes>();
             Contexto contexto = new Contexto();
@@ -125,9 +144,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
                 contexto.Dispose();
             }
             return Lista;
-    }
+        }
 
-    public static List <Clientes> GetList()
+        public static List<Clientes> GetClientes()
         {
             List<Clientes> Lista = new List<Clientes>();
             Contexto contexto = new Contexto();

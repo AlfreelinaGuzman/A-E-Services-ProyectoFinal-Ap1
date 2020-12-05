@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros"
         mc:Ignorable="d"
         Closing="DataWindow_Closing"
-        Title="Registrar Articulo" Height="510" Width="380" >
+        Title="Registrar Articulo" Height="800" Width="380" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation = "Vertical" Margin ="30,30">
             <StackPanel Orientation ="Vertical">
@@ -88,7 +88,7 @@
                 <!-- Boton Nuevo-->
                 <Button x:Name ="NuevoButton"  Width = "80" Height = "30" Click="NuevoButton_Click">
                     <StackPanel Orientation= "Horizontal">
-                        <Image Source= "/Imagenes/Nuevo.png" Width="20" Height= "20"/>  
+                        <Image Source= "/Imagenes/Nuevo.png" Width="20" Height= "20"/>
                         <Label Content=" Nuevo"/>
                     </StackPanel>
                 </Button>
@@ -96,21 +96,21 @@
                 <!-- Boton Guardar-->
                 <Button x:Name ="GuardarButton" Margin="10,0" Width = "80" Height = "30" Click="GuardarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
-                        <Image Source= "/Imagenes/Guardar.png" Width="20" Height= "20"/> 
+                        <Image Source= "/Imagenes/Guardar.png" Width="20" Height= "20"/>
                         <Label Content=" Guardar"/>
                     </StackPanel>
-                </Button>   
+                </Button>
 
                 <!-- Boton Eliminar-->
                 <Button x:Name ="EliminarButton" Margin="0,0" Width = "80" Height = "30" Click="EliminarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
-                        <Image Source= "/Imagenes/Eliminar.png" Width="20" Height= "20"/>  
+                        <Image Source= "/Imagenes/Eliminar.png" Width="20" Height= "20"/>
                         <Label Content=" Eliminar"/>
                     </StackPanel>
-                </Button> 
+                </Button>
             </StackPanel>
 
         </StackPanel>
-        
+
     </Grid>
 </Window>
