@@ -58,6 +58,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             RegistroProveedores Ventana = new RegistroProveedores();
             Ventana.Show();
         }
+        //RegistrarVentas_Click
+
+           private void RegistrarVentas_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroVentas Ventana = new RegistroVentas();
+            Ventana.Show();
+        }
 
         private void ConsultarUsuario_Click(object sender, RoutedEventArgs e)
         {

@@ -1,0 +1,26 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
+{
+    public class VentasDetalle{
+        [Key]
+        public int Id{ get; set; }
+        public int VentaId { get; set; }
+        public int ArticuloId { get; set; }
+        public decimal Costo { get; set; }
+        public decimal Cantidad  { get; set; }
+
+       [ForeignKey("VentaId")]
+
+        public Ventas Ventas{get; set;}= new Ventas();
+
+        [ForeignKey("ArticuloId")]
+
+        public Articulos Articulos{get; set;}= new Articulos();
+       
+    }
+}

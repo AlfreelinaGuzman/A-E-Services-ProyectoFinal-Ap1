@@ -8,7 +8,7 @@
         
         Title="Registrar Compra" Height="510" Width="400" >
     <Grid>
-        <StackPanel Orientation = "Vertical" Margin ="30,30" >
+        <!--<StackPanel Orientation = "Vertical" Margin ="30,30" >
             <StackPanel Orientation ="Vertical">
 
 
@@ -110,7 +110,7 @@
 
 
             <StackPanel Orientation= "Horizontal" Margin="0,10">
-                <!-- Boton Nuevo-->
+                
                 <Button x:Name ="NuevoButton"  Width = "80" Height = "30" Click="NuevoButton_Click">
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Nuevo.png" Width="20" Height= "20"/>
@@ -118,7 +118,7 @@
                     </StackPanel>
                 </Button>
 
-                <!-- Boton Guardar-->
+               
                 <Button x:Name ="GuardarButton" Margin="10,0" Width = "80" Height = "30" Click="GuardarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Guardar.png" Width="20" Height= "20"/>
@@ -126,7 +126,7 @@
                     </StackPanel>
                 </Button>
 
-                <!-- Boton Eliminar-->
+                
                 <Button x:Name ="EliminarButton" Margin="0,0" Width = "80" Height = "30" Click="EliminarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Eliminar.png" Width="20" Height= "20"/>
@@ -136,6 +136,6 @@
             </StackPanel>
 
         </StackPanel>
-        
+        -->
     </Grid>
 </Window>
