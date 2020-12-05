@@ -49,12 +49,51 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         private bool Validar() 
         { 
             bool Validado = true;  
+            string Mensaje = ""; 
 
             if (ProveedorIdTextBox.Text.Length == 0) 
             {
                  Validado = false; 
                  MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
+            if (string.IsNullOrWhiteSpace(NombresTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Nombre";
+            }
+             if (string.IsNullOrWhiteSpace(CedulaTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Cedula";
+            }
+            if (string.IsNullOrWhiteSpace(TelefonoTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Telefono";
+            }
+
+            if (string.IsNullOrWhiteSpace(CelularTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Celular";
+            }
+
+             if (string.IsNullOrWhiteSpace(DireccionTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Direccion";
+            }
+
+            if (string.IsNullOrWhiteSpace(EMailTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Email";
+            }
+            if(Validado == false){
+                MessageBox.Show(Mensaje, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+             
             return Validado; 
         }
 
@@ -96,13 +135,14 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             if(anterior != null)
             {
                 proveedores = anterior;
-                this.DataContext = null;
-                this.DataContext = proveedores;
+                //this.DataContext = null;
             }
             else
             {
                 MessageBox.Show("No se encontro");
             }
+            this.DataContext = proveedores;
+
         }
         
         private bool Existe()

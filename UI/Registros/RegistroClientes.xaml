@@ -49,11 +49,11 @@
 
                 <!--EMail-->
                 <Label Content= "E-Mail" HorizontalAlignment="Left" />
-                <TextBox x:Name= "EMailTextBox" Width="300" Text= "{Binding EMail}" Height= "20" HorizontalAlignment= "Left"/>
+                <TextBox x:Name= "EMailTextBox" Width="300" Text= "{Binding Email}" Height= "20" HorizontalAlignment= "Left"/>
 
                 <!--Fecha-->
                 <Label Content="FechaCreacion: " HorizontalAlignment="Left" />
-                <DatePicker x:Name= "FechaDatePickerTextBox" Width="300" SelectedDate="{Binding Fecha}" Height= "30" HorizontalAlignment="Left"/>
+                <DatePicker x:Name= "FechaDatePickerTextBox" Width="300" SelectedDate="{Binding FechaRegistro}" Height= "30" HorizontalAlignment="Left"/>
 
 
             </StackPanel>

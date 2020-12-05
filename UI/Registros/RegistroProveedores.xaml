@@ -16,7 +16,7 @@
                     <TextBox x:Name= "ProveedorIdTextBox" Width="100" Text= "{Binding ProveedorId}" Height= "20" HorizontalAlignment= "Left" Margin="10,0"/>
 
                     <!--Boton Buscar-->
-                    <Button x:Name="BuscarButton" Margin="20,0" Width = "70" Height = "30" Click="NuevoButton_Click">
+                    <Button x:Name="BuscarButton" Margin="20,0" Width = "70" Height = "30" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source= "/Imagenes/Buscar.png" Width="20" Height= "20"/>
                             <Label Content="Buscar"/>
@@ -53,14 +53,14 @@
 
                 <!--Fecha-->
                 <Label Content="FechaCreacion: " HorizontalAlignment="Left" />
-                <DatePicker x:Name= "FechaDatePickerTextBox" Width="300" SelectedDate="{Binding Fecha}" Height= "30" HorizontalAlignment="Left"/>
+                <DatePicker x:Name= "FechaDatePickerTextBox" Width="300" SelectedDate="{Binding FechaRegistro}" Height= "30" HorizontalAlignment="Left"/>
 
 
             </StackPanel>
 
             <StackPanel Orientation= "Horizontal" Margin="0,10">
                 <!-- Boton Nuevo-->
-                <Button x:Name ="NuevoButton"  Width = "80" Height = "30" >
+                <Button x:Name ="NuevoButton"  Width = "80" Height = "30" Click="NuevoButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Nuevo.png" Width="20" Height= "20"/>
                         <Label Content=" Nuevo"/>
@@ -68,7 +68,7 @@
                 </Button>
 
                 <!-- Boton Guardar-->
-                <Button x:Name ="GuardarButton" Margin="10,0" Width = "80" Height = "30"  >
+                <Button x:Name ="GuardarButton" Margin="10,0" Width = "80" Height = "30" Click="GuardarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Guardar.png" Width="20" Height= "20"/>
                         <Label Content=" Guardar"/>

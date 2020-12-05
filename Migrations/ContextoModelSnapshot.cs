@@ -37,12 +37,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<decimal>("Garantia")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Minimo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ArticuloId");
 
                     b.ToTable("Articulos");
@@ -244,10 +238,16 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<string>("Cedula")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Celular")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Direccion")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EMail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
@@ -321,9 +321,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
                     b.Property<float>("NCF")
                         .HasColumnType("REAL");
-
-                    b.Property<decimal>("SubTotal")
-                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");

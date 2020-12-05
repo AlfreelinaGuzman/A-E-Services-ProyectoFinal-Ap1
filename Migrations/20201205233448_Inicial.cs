@@ -15,10 +15,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Decripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    Precio = table.Column<decimal>(type: "TEXT", nullable: false),
                     Cantidad = table.Column<decimal>(type: "TEXT", nullable: false),
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Minimo = table.Column<decimal>(type: "TEXT", nullable: false),
                     Garantia = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -97,9 +95,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(type: "TEXT", nullable: true),
                     Cedula = table.Column<string>(type: "TEXT", nullable: true),
+                    Celular = table.Column<string>(type: "TEXT", nullable: true),
                     Telefono = table.Column<string>(type: "TEXT", nullable: true),
                     Direccion = table.Column<string>(type: "TEXT", nullable: true),
-                    EMail = table.Column<string>(type: "TEXT", nullable: true)
+                    EMail = table.Column<string>(type: "TEXT", nullable: true),
+                    FechaRegistro = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,7 +135,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NCF = table.Column<float>(type: "REAL", nullable: false),
                     ITBIS = table.Column<int>(type: "INTEGER", nullable: false),
-                    SubTotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     Total = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

@@ -14,7 +14,7 @@
 
             <!--Nombre Usuario-->
             <StackPanel Orientation="Horizontal">
-                <Image Source="/Imagenes/CircleUser.png" Height="30" />
+                <Image Source="/Imagenes/user.png" Height="30" />
                 <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" Width="235" VerticalContentAlignment="Center" KeyDown="NombreUsuarioTextBox_KeyDown" Margin="5,0,0,0" />
             </StackPanel>
 
@@ -37,7 +37,7 @@
                 <Button x:Name="IniciarSesionButton" Click="IniciarSesionButton_Click" Height="35">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Imagenes/IniciarSesion.png" Height="25"/>
-                        <Label Content="Iniciar seccion" FontWeight="Bold"/>
+                        <Label Content="Iniciar Sesión" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

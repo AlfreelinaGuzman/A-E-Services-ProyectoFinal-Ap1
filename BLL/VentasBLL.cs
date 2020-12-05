@@ -15,32 +15,28 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static bool Guardar(Ventas ventas)
         {
-            if (!Existe(ventas.VentaId))
+            //if (!Existe(ventas.VentaId))
                 return Insertar(ventas);
-            else
-                return Modificar(ventas);
+            //else
+              //  return Modificar(ventas);
         }
 
         private static bool Existe(int id)
         {
             bool existe;
             Contexto contexto = new Contexto();
-            try
-            {
-                existe = contexto.Ventas.Any(o => o.VentaId == id);
+            try{
+                existe = contexto.Ventas.Any(o => o.VentaId== id);
             }
-            catch (Exception)
-            {
+            catch(Exception){
                 throw;
 
-            }
-            finally
-            {
+            } finally{
                 contexto.Dispose();
             }
             return existe;
         }
-
+        
         private static bool Insertar(Ventas ventas)
         {
             bool paso = false;
@@ -49,7 +45,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Ventas.Add(ventas);
                 paso = contexto.SaveChanges() > 0;
-
+                
             }
             catch (Exception)
             {
@@ -62,71 +58,56 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return paso;
         }
 
-        public static bool Modificar(Ventas ventas)
-        {
+        public static bool Modificar(Ventas ventas){
             bool Modificado = false;
             Contexto contexto = new Contexto();
-            try
-            {
+            try{
                 contexto.Entry(ventas).State = EntityState.Modified;
-                Modificado = (contexto.SaveChanges() > 0);
+                Modificado = (contexto.SaveChanges()>0);
             }
-            catch (Exception)
-            {
+            catch(Exception){
                 throw;
-
-            }
-            finally
-            {
+               
+            } finally{
                 contexto.Dispose();
             }
             return Modificado;
         }
 
-        public static bool Eliminar(int id)
-        {
+        public static bool Eliminar(int id){
             bool Eliminado = false;
             Contexto contexto = new Contexto();
-            try
-            {
+            try{
                 var ventas = contexto.Ventas.Find(id);
                 contexto.Entry(ventas).State = EntityState.Deleted;
-                Eliminado = contexto.SaveChanges() > 0;
+                Eliminado = contexto.SaveChanges()>0;
             }
 
-            catch (Exception)
-            {
+            catch(Exception){
                 throw;
-
-            }
-            finally
-            {
+               
+            } finally{
                 contexto.Dispose();
             }
             return Eliminado;
         }
 
-        public static Ventas Buscar(int id)
-        {
+        public static Ventas Buscar(int id){
             Ventas ventas;
             Contexto contexto = new Contexto();
-            try
-            {
-                ventas = contexto.Ventas.Include(x => x.VentasDetalle).Where(p => p.VentaId == id).SingleOrDefault();
+            try{
+                ventas = contexto.Ventas.Include(x => x.VentasDetalle).Where(p => p.VentaId  == id).SingleOrDefault();
             }
-            catch (Exception)
-            {
+            catch(Exception){
                 throw;
-
-            }
-            finally
-            {
+               
+            } finally{
                 contexto.Dispose();
             }
             return ventas;
         }
 
-        public static List<Ventas> GetList(Expression<Func<Ventas, bool>> ventas)
+    public static List <Ventas> GetList(Expression<Func<Ventas, bool>> ventas)
         {
             List<Ventas> Lista = new List<Ventas>();
             Contexto contexto = new Contexto();
@@ -144,9 +125,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
                 contexto.Dispose();
             }
             return Lista;
-        }
+    }
 
-        public static List<Ventas> GetList()
+    public static List <Ventas> GetList()
         {
             List<Ventas> Lista = new List<Ventas>();
             Contexto contexto = new Contexto();

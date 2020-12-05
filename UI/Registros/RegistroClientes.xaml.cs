@@ -51,23 +51,66 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             clientes= ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
             return (clientes != null);
         }
+        
         private bool Validar() 
         { 
             bool Validado = true;  
+            string Mensaje = "";
 
             if (ClienteIdTextBox.Text.Length == 0) 
             {
                  Validado = false; 
-                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                 MessageBox.Show("Transaccion Fallida ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (string.IsNullOrWhiteSpace(NombresTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Nombre";
+            }
+             if (string.IsNullOrWhiteSpace(CedulaTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Cedula";
+            }
+            if (string.IsNullOrWhiteSpace(TelefonoTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Telefono";
+            }
+
+            if (string.IsNullOrWhiteSpace(CelularTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Celular";
+            }
+
+             if (string.IsNullOrWhiteSpace(DireccionTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese la Direccion";
+            }
+
+            if (string.IsNullOrWhiteSpace(EMailTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el Email";
+            }
+            if(Validado == false){
+                MessageBox.Show(Mensaje, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return Validado; 
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validar())
+            {
+                return;
+            }
            /// bool paso = false;
             if (ClientesBLL.Guardar(clientes))
             {
+                
                 Limpiar();
                 MessageBox.Show("Guardado!", "Exito",
                     MessageBoxButton.OK, MessageBoxImage.Information);
@@ -101,13 +144,14 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             if(anterior != null)
             {
                 clientes = anterior;
-                this.DataContext = null;
-                this.DataContext = clientes;
+                //this.DataContext = null;
+                
             }
             else
             {
                 MessageBox.Show("No se encontro");
             }
+            this.DataContext = clientes;
         }
         
         private bool Existe()

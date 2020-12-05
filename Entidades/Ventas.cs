@@ -14,7 +14,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public DateTime Fecha { get; set; } = DateTime.Now;
         public float NCF { get; set; }
         public int ITBIS { get; set; }
-        public decimal SubTotal { get; set; }
+        //public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
 
         [ForeignKey("VentaId")]

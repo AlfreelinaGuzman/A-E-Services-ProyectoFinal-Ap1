@@ -130,7 +130,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             Contexto contexto = new Contexto();
             try
             {
-                proveedores = contexto.Proveedores.Find();
+                proveedores = contexto.Proveedores.Find(id);
             }
             catch (Exception)
             {

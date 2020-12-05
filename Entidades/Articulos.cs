@@ -12,10 +12,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public int ArticuloId { get; set; }
         public DateTime Fecha { get; set; }
         public string Decripcion { get; set; }
-        public decimal Precio { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Costo { get; set; }
-        public decimal Minimo { get; set; }
         public decimal Garantia { get; set; }
     }
 }

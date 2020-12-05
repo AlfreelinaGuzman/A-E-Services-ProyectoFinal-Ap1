@@ -69,7 +69,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <StackPanel Orientation="Vertical">
                             <Label Content="ArticuloId"/>
-                            <ComboBox x:Name="ArticuloIdComboBox" Height="22"/>
+                            <ComboBox x:Name="ArticuloIdComboBox" Height="22" SelectionChanged="ArticuloIdComboBox_SelectionChanged"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0" >
@@ -93,7 +93,7 @@
             
             <!--DataGrid-->
             <StackPanel Orientation= "Horizontal" >
-                <DataGrid x:Name="DetalleDataGrid" ItemsSource="{Binding FacturasDetalle}" AutoGenerateColumns="False" Height="100" Width="400" IsReadOnly="True">
+                <DataGrid x:Name="DetalleDataGrid"  AutoGenerateColumns="False" Height="100" Width="400" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ArticuloId" Binding="{Binding ArticuloId}"/>
                         <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>

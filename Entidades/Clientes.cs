@@ -15,6 +15,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public string Email { get; set; }
         public string Telefono { get; set; }
         public string Celular { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }=DateTime.Now;
     }
 }

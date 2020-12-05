@@ -40,8 +40,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             ClienteIdComboBox.SelectedValuePath = "ClienteId";
             ClienteIdComboBox.DisplayMemberPath = "ClienteId";
 
-            
-
         }
 
 
@@ -107,26 +105,29 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 MessageBox.Show("No se encontro");
             }
         }
- private void AgregarButton_Click(object sender, RoutedEventArgs e) {
-       
-       var filaDetalle = new VentasDetalle 
-     { 
-        VentaId = this.ventas.VentaId,
-        ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()),
-        Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
-        Costo = Convert.ToDecimal(CostoTextBox.Text), 
-        Cantidad = Convert.ToDecimal(CantidadTextBox.Text)
-      };
+        private void AgregarButton_Click(object sender, RoutedEventArgs e) 
+        {
+            var filaDetalle = new VentasDetalle 
+            { 
+                VentaId = this.ventas.VentaId,
+                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()),
+                Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
+                Costo = Convert.ToDecimal(CostoTextBox.Text), 
+                Cantidad = Convert.ToDecimal(CantidadTextBox.Text)
+        };
 
-      ventas.Total += Convert.ToDecimal(CostoTextBox.Text.ToString());
-      //ventas.Total *= Convert.ToDecimal(CantidadTextBox.text.ToDecimal());
-      this.ventas.VentasDetalle.Add(filaDetalle); 
-      Actualizar();
-      ArticuloIdComboBox.SelectedIndex = -1; 
-      CostoTextBox.Clear(); 
-      CantidadTextBox.Clear();
-    }
-    private void RemoverButton_Click(object sender, RoutedEventArgs e) 
+            ventas.Total += Convert.ToDecimal(CostoTextBox.Text.ToString());
+         //ventas.Total *= Convert.ToDecimal(CantidadTextBox.text.ToDecimal());
+            this.ventas.VentasDetalle.Add(filaDetalle); 
+            Actualizar();
+            DetalleDataGrid.ItemsSource = null;
+            DetalleDataGrid.ItemsSource = ventas.VentasDetalle;
+            ArticuloIdComboBox.SelectedIndex = -1; 
+            CostoTextBox.Clear(); 
+            CantidadTextBox.Clear();
+        }
+
+        private void RemoverButton_Click(object sender, RoutedEventArgs e) 
     { 
         try { 
             decimal total = Convert.ToDecimal(TotalTextBox.Text); 
@@ -135,6 +136,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             ventas.VentasDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
             ventas.Total -= total; 
              Actualizar(); 
+            DetalleDataGrid.ItemsSource = null;
+            DetalleDataGrid.ItemsSource = ventas.VentasDetalle;
          } 
         } 
         catch
@@ -173,6 +176,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             CostoTextBox.Clear();
             CostoTextBox.Focus(); 
             } }
+
+    private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
+            var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;
+            if (articulos != null) {
+                CostoTextBox.Text = articulos.Costo.ToString();
+            }
+        }
+
 
     }
     }

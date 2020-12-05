@@ -108,11 +108,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static Clientes Buscar(int id)
         {
-            Clientes clientes;
+            Clientes clientes = new Clientes();
             Contexto contexto = new Contexto();
             try
             {
-                clientes = contexto.Clientes.Where(p => p.ClienteId == id).SingleOrDefault();
+                clientes = contexto.Clientes.Find(id);
             }
             catch (Exception)
             {
