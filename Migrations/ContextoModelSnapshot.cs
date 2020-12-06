@@ -352,8 +352,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticuloId");
-
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
@@ -381,19 +379,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.VentasDetalle", b =>
                 {
-                    b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Articulos", "Articulos")
-                        .WithMany()
-                        .HasForeignKey("ArticuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Ventas", null)
                         .WithMany("VentasDetalle")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Articulos");
                 });
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", b =>

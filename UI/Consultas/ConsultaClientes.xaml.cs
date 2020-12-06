@@ -21,120 +21,58 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
     public partial class ConsultaClientes : Window
     {
-        
+        public List<Clientes> clientes { get; set; } = new List<Clientes>();
+
         public ConsultaClientes()
         {
             InitializeComponent();
-            
         }
-
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-             var listado = new List<Clientes>();
+           // var listado = new List<Clientes>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0:
-                        try
+                     try
                         {
-                            listado = ClientesBLL.GetList(e=>true);
+                            clientes = ClientesBLL.GetList(e=>true);
                         }
                         catch (System.Exception e0)
                         {
                             
                             MessageBox.Show(e0.Message,"Error!",MessageBoxButton.OK);
                         }
-                        
                         break;
-                    case 1:
-                    try
-                        {
-                            listado = ClientesBLL.GetList(e => e.ClienteId == Convert.ToInt32(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e1)
-                        {
-                            
-                            MessageBox.Show(e1.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        break;
-                    case 2:
-                        try
-                        {
-                            listado = ClientesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e2)
-                        {
-                            
-                            MessageBox.Show(e2.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        
-                        break;
-                  /*  case 3:
-                        try
-                        {
-                            listado = ClientesBLL.GetList(e => e.Apellidos.Contains(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e3)
-                        {
-                            
-                            MessageBox.Show(e3.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        
-                        break;
-                    
-                    case 4:
-                        try
-                        {
-                            listado = ClientesBLL.GetList(e => e.NombreUsuario.Contains(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e4)
-                        {
-                            
-                            MessageBox.Show(e4.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        
-                        break;
-                    case 5:
-                        try
-                        {
-                            listado = ClientesBLL.GetList(e => e.Telefono.Contains(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e5)
-                        {
-                            
-                           MessageBox.Show(e5.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        
-                        break;
-                    case 6:
-                        try
-                        {
-                            listado = ClientesBLL.GetList(e => e.Correo.Contains(CriterioTextBox.Text));
-                        }
-                        catch (System.Exception e6)
-                        {
-                            
-                            MessageBox.Show(e6.Message,"Error!",MessageBoxButton.OK);
-                        }
-                        
-                        break;*/
-                  
-                }
 
-                
+                    case 1:
+                        clientes = ClientesBLL.GetList(p => p.ClienteId == this.ToInt(CriterioTextBox.Text));
+                        break;
+                }
             }
             else
             {
-                listado = ClientesBLL.GetList(c => true);
+                clientes = ClientesBLL.GetList(c => true);
             }
 
-          
             DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = listado;
+            DatosDataGrid.ItemsSource = clientes;
+        }
+
+        public int ToInt(string value)
+        {
+            int retorno = 0;
+
+            int.TryParse(value, out retorno);
+
+            return retorno;
+        }
+
+        private void DatosDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
-
-
 }

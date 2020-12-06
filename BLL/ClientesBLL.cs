@@ -107,7 +107,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static Clientes Buscar(int id)
         {
-            Clientes clientes = new Clientes();
+            Clientes clientes;
             Contexto contexto = new Contexto();
             try
             {

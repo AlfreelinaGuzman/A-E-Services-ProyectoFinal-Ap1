@@ -124,7 +124,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static Proveedores Buscar(int id)
         {
-            Proveedores proveedores = new Proveedores();
+            Proveedores proveedores;
             Contexto contexto = new Contexto();
             try
             {

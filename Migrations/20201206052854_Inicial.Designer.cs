@@ -9,7 +9,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201205233448_Inicial")]
+    [Migration("20201206052854_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -354,8 +354,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticuloId");
-
                     b.HasIndex("VentaId");
 
                     b.ToTable("VentasDetalle");
@@ -383,19 +381,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.VentasDetalle", b =>
                 {
-                    b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Articulos", "Articulos")
-                        .WithMany()
-                        .HasForeignKey("ArticuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Ventas", null)
                         .WithMany("VentasDetalle")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Articulos");
                 });
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", b =>

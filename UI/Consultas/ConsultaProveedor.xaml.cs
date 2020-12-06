@@ -19,48 +19,60 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
-    public partial class ConsultaVentas : Window
+    public partial class ConsultaProveedor : Window
     {
-        public ConsultaVentas()
+        public List<Proveedores> proveedores { get; set; } = new List<Proveedores>();
+
+        public ConsultaProveedor()
         {
             InitializeComponent();
         }
-
-         public List<Ventas> ventas { get; set; } = new List<Ventas>();
-
-       private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            //var listado = new List<Ventas>();
+           // var listado = new List<proveedores>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0:
-                        ventas = VentasBLL.GetList(p => p.VentaId == this.ToInt(CriterioTextBox.Text));
+                     try
+                        {
+                            proveedores = ProveedoresBLL.GetList(e=>true);
+                        }
+                        catch (System.Exception e0)
+                        {
+                            
+                            MessageBox.Show(e0.Message,"Error!",MessageBoxButton.OK);
+                        }
                         break;
 
-                
+                    case 1:
+                        proveedores = ProveedoresBLL.GetList(p => p.ProveedorId == this.ToInt(CriterioTextBox.Text));
+                        break;
                 }
             }
             else
             {
-                ventas = VentasBLL.GetList(c => true);
+                proveedores = ProveedoresBLL.GetList(c => true);
             }
 
             DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = ventas;
-
+            DatosDataGrid.ItemsSource = proveedores;
         }
 
         public int ToInt(string value)
         {
             int retorno = 0;
 
-            int.TryParse(value,                                                                                      out retorno);
+            int.TryParse(value, out retorno);
 
             return retorno;
         }
 
+        private void DatosDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

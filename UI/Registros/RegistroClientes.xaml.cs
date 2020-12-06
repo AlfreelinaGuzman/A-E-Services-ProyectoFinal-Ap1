@@ -28,11 +28,7 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         public RegistroClientes()
         {
            InitializeComponent();
-/*
-            TipoTareaComboBox.ItemsSource = TareasBLL.GetList();
-            TipoTareaComboBox.SelectedValuePath = "TareaID";
-            TipoTareaComboBox.DisplayMemberPath = "TipoTarea";
-*/
+
         }
 
         private void Limpiar()
@@ -144,16 +140,16 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             if(anterior != null)
             {
                 clientes = anterior;
-                //this.DataContext = null;
                 
             }
             else
             {
                 MessageBox.Show("No se encontro");
             }
+            
+            this.DataContext = null;
             this.DataContext = clientes;
         }
-        
         private bool Existe()
         {
             Clientes esValido = ClientesBLL.Buscar(clientes.ClienteId);

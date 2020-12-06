@@ -62,6 +62,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+           if (!Validar())
+            {
+                return;
+            }
            /// bool paso = false;
            ventas.ClienteId = (int) ClienteIdComboBox.SelectedValue;
             if (VentasBLL.Guardar(ventas))
@@ -98,13 +102,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
             if(anterior != null)
             {
-                ventas = anterior;
-                this.DataContext = ventas;
+                ventas = anterior; 
             }
             else
             {
                 MessageBox.Show("No se encontro");
             }
+            this.DataContext = ventas;
         }
         private void AgregarButton_Click(object sender, RoutedEventArgs e) 
         {
@@ -185,6 +189,37 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 CostoTextBox.Text = articulos.Costo.ToString();
             }
         }
+    
+        private bool Validar() 
+        { 
+            bool Validado = true;  
+            string Mensaje = "";
 
+            if (VentaIdTextBox.Text.Length == 0) 
+            {
+                 Validado = false; 
+                 MessageBox.Show("Transaccion Fallida ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (ClienteIdComboBox.Text.Length == 0) 
+            {
+                 Validado = false; 
+                 MessageBox.Show("Transaccion Fallida en Cliente", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (string.IsNullOrWhiteSpace(NCFTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el NCF";
+            }
+             if (string.IsNullOrWhiteSpace(ITBISTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el % de Itbis";
+            }
+          
+            if(Validado == false){
+                MessageBox.Show(Mensaje, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return Validado; 
+        }
     }
     }
