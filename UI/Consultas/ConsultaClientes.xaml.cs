@@ -28,7 +28,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             
         }
 
-
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
              var listado = new List<Clientes>();
