@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1"
         mc:Ignorable="d"
-        Closing="DataWindow_Closing"
         Title="Menu Principal" Height="300" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel>
@@ -26,6 +25,7 @@
                    
                     <MenuItem x:Name="ConsultarUsuario" Header="Consultar Usuarios " Click="ConsultarUsuario_Click"/>
                     <MenuItem x:Name="ConsultarVenta" Header="Consultar Ventas " Click="ConsultarVentas_Click"/>
+                    <MenuItem x:Name="ConsultarClientes" Header="Consultar Clientes " Click="ConsultarClientes_Click"/>
 
                 </MenuItem>
             </Menu>

@@ -63,6 +63,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
            /// bool paso = false;
+           ventas.ClienteId = (int) ClienteIdComboBox.SelectedValue;
             if (VentasBLL.Guardar(ventas))
             {
                 Limpiar();
@@ -111,7 +112,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             { 
                 VentaId = this.ventas.VentaId,
                 ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()),
-                Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
+                //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Costo = Convert.ToDecimal(CostoTextBox.Text), 
                 Cantidad = Convert.ToDecimal(CantidadTextBox.Text)
         };
@@ -183,7 +184,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 CostoTextBox.Text = articulos.Costo.ToString();
             }
         }
-
 
     }
     }

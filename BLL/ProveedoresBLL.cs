@@ -12,7 +12,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class ProveedoresBLL
     {
-
         public static bool Guardar(Proveedores proveedores)
         {
             if (!Existe(proveedores.ProveedorId))

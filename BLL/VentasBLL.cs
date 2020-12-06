@@ -15,10 +15,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static bool Guardar(Ventas ventas)
         {
-            //if (!Existe(ventas.VentaId))
+            if (!Existe(ventas.VentaId))
                 return Insertar(ventas);
-            //else
-              //  return Modificar(ventas);
+            else
+               return Modificar(ventas);
         }
 
         private static bool Existe(int id)

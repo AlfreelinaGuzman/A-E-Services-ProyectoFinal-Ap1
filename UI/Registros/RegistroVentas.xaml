@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="Registro de Ventas" Height="660" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel Orientation= "Vertical" Margin="10,10,10,10">
+       <StackPanel Orientation= "Vertical" Margin="10,10,10,10">
             <StackPanel Orientation= "Horizontal">
                 <!--ID-->
                 <Label Content= "VentaId" HorizontalAlignment="Left" />
                 <TextBox x:Name= "VentaIdTextBox" Width="100" Text= "{Binding FacturaId}" Height= "20" HorizontalAlignment= "Left"/>
 
                 <!--Boton Buscar-->
-                <Button x:Name ="BuscarButton" Margin="10,0" Width = "70" Height = "30" >
+                <Button x:Name ="BuscarButton" Margin="10,0" Width = "70" Height = "30" Click="BuscarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Buscar.png" Width="20" Height= "20"/>
                         <Label Content=" Buscar"/>
