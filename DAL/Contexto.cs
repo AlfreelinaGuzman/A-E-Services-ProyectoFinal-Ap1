@@ -19,7 +19,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = Data/Databse.db");
+            optionsBuilder.UseSqlite("Data Source = Data/WaoCellDominicana.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

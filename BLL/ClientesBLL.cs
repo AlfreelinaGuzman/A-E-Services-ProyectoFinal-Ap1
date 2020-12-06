@@ -42,13 +42,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         private static bool Insertar(Clientes clientes)
         {
-            bool paso = false;
+            //bool paso = false;
             Contexto contexto = new Contexto();
+            bool esOk = false;
             try
             {
                 contexto.Clientes.Add(clientes);
-                paso = contexto.SaveChanges() > 0;
-
+                esOk = (contexto.SaveChanges() > 0);
             }
             catch (Exception)
             {
@@ -58,7 +58,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Dispose();
             }
-            return paso;
+            return esOk;
         }
 
         public static bool Modificar(Clientes clientes)

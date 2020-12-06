@@ -41,7 +41,7 @@
                     <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
                     <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
                     <DataGridTextColumn Header="Direccion" Binding="{Binding Direccion}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding EMail}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
