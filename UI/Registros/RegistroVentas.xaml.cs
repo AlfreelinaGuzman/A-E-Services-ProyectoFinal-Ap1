@@ -18,7 +18,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 using WaoCellDominicana_ProyectoFinal_Ap1.UI;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
-{
+{/*
     /// <summary>
     /// Interaction logic for Registroventas.xaml
     /// </summary>

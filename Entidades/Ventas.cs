@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
 {
     public class Ventas
-    {
+   /* {
         [Key]
         public int VentaId { get; set; }
         public int ClienteId { get; set; }

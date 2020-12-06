@@ -18,7 +18,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
     /// </summary>
     public partial class ConsultaVentas : Window
     {
-        public ConsultaVentas()
+   /*     public ConsultaVentas()
         {
             InitializeComponent();
         }

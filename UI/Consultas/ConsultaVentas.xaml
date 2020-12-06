@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Consulta Ventas" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-      <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+      // <StackPanel Orientation="Vertical" Margin="10,5,10,0">
         <StackPanel Orientation="Horizontal" Height="58">
             <StackPanel Margin="5,0">
                 <Label Content="Filtro:"/>

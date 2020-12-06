@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Registrar Clientes" Height="520" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel Orientation = "Vertical" Margin ="30,30">
+      /*  <StackPanel Orientation = "Vertical" Margin ="30,30">
             <StackPanel Orientation ="Vertical">
                 <StackPanel Orientation ="Horizontal" >
 

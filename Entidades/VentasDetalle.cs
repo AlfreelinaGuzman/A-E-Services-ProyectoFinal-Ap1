@@ -9,7 +9,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
 {
     public class VentasDetalle
     {
-        [Key]
+       /* [Key]
         public int Id { get; set; }
         public int VentaId { get; set; }
         public int ArticuloId { get; set; }
