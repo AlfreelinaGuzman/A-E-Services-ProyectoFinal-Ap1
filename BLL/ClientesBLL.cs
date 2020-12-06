@@ -12,7 +12,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class ClientesBLL
     {
-
         public static bool Guardar(Clientes clientes)
         {
             if (!Existe(clientes.ClienteId))

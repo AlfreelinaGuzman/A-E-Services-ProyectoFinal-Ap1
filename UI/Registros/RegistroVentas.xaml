@@ -9,6 +9,7 @@
     <Grid>
        <StackPanel Orientation= "Vertical" Margin="10,10,10,10">
             <StackPanel Orientation= "Horizontal">
+                
                 <!--ID-->
                 <Label Content= "VentaId" HorizontalAlignment="Left" />
                 <TextBox x:Name= "VentaIdTextBox" Width="100" Text= "{Binding FacturaId}" Height= "20" HorizontalAlignment= "Left"/>
@@ -81,7 +82,6 @@
                             <Label Content="Cantidad" HorizontalAlignment="Center"/>
                             <TextBox x:Name="CantidadTextBox" Height="20" Width="70" TextChanged="CantidadTextBox_TextChanged"/>
                         </StackPanel>
-
 
                     </StackPanel>
                 </GroupBox>

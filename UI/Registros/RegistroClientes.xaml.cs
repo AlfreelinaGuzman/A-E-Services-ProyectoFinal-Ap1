@@ -24,7 +24,7 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
     /// </summary>
     public partial class RegistroClientes : Window
     {
-     /*   private Clientes clientes = new Clientes ();
+        private Clientes clientes = new Clientes ();
         public RegistroClientes()
         {
            InitializeComponent();

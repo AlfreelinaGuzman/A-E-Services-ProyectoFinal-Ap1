@@ -12,7 +12,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class VentasBLL
     {
-
         public static bool Guardar(Ventas ventas)
         {
             if (!Existe(ventas.VentaId))

@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
-  /*  public partial class ConsultaClientes : Window
+    public partial class ConsultaClientes : Window
     {
         
         public ConsultaClientes()

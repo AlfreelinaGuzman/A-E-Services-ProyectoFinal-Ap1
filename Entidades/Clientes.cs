@@ -7,7 +7,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
 {
     public class Clientes
     {
-     /*   [Key]
+        [Key]
         public int ClienteId { get; set; }
         public string Nombres { get; set; }
         public string Cedula { get; set; }

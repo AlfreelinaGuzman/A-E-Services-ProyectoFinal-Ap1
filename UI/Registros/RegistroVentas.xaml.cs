@@ -18,7 +18,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 using WaoCellDominicana_ProyectoFinal_Ap1.UI;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
-{/*
+{
     /// <summary>
     /// Interaction logic for Registroventas.xaml
     /// </summary>
@@ -176,7 +176,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             MessageBox.Show($"Porfavor, digite un numero.");
             CostoTextBox.Clear();
             CostoTextBox.Focus(); 
-            } }
+            } 
+    }
 
     private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
             var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;

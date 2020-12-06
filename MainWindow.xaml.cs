@@ -74,7 +74,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             Ventana.Show();
         }
 
-       
          private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
         {
             ConsultaClientes Ventana = new ConsultaClientes();

@@ -8,7 +8,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
 {
     public class Articulos
     {
-    /*    [Key]
+        [Key]
         public int ArticuloId { get; set; }
         public DateTime Fecha { get; set; }
         public string Decripcion { get; set; }

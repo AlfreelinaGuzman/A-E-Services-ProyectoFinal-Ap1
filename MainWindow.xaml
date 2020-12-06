@@ -11,18 +11,22 @@
             <Menu Height = "20" VerticalAlignment="Top">
 
                 <MenuItem Header= "Registros" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top">
+                   
                     <MenuItem x:Name="RegistrarUsuario" Header="Registrar Usuarios " Click="RegistrarUsuario_Click"/>
                     <MenuItem x:Name="RegistrarArticulo" Header="Registrar Articulos " Click="RegistrarArticulo_Click"/>
                     <MenuItem x:Name="RegistrarCliente" Header="Registrar Clientes " Click="RegistrarCliente_Click"/>
                     <MenuItem x:Name="RegistrarCompra" Header="Registrar Compras " Click="RegistrarCompra_Click"/>
                     <MenuItem x:Name="RegistrarProveedores" Header="Registrar Proveedor" Click="RegistrarProveedor_Click"/>
                     <MenuItem x:Name="RegistrarVentas" Header="Registrar Ventas" Click="RegistrarVentas_Click"/>
+
                 </MenuItem>
 
                 <MenuItem Header= "Consultas" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top">
+                    
                     <MenuItem x:Name="ConsultarUsuario" Header="Consultar Usuarios " Click="ConsultarUsuario_Click"/>
                     <MenuItem x:Name="ConsultarVenta" Header="Consultar Ventas " Click="ConsultarVentas_Click"/>
                     <MenuItem x:Name="ConsultarClientes" Header="Consultar Clientes " Click="ConsultarClientes_Click"/>
+                    
                 </MenuItem>
             </Menu>
 

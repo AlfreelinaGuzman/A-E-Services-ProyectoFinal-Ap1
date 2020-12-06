@@ -80,7 +80,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Dispose();
             }
-
             /* try{
                  contexto.Database.ExecuteSqlRaw($"Delete FROM OrdenesDetalle Where OrdenID = {suplidores.SuplidorID}");
                  foreach(var anterior in suplidores.OrdenesDetalle)
