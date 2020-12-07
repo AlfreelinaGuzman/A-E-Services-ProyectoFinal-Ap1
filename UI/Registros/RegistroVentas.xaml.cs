@@ -121,7 +121,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
 
             };
             
-            //VentasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
+           // VentasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()), Convert.ToInt32(CantidadTextBox.Text));
 
             this.ventas.VentasDetalle.Add(filaDetalle);
             CalcularTotal();

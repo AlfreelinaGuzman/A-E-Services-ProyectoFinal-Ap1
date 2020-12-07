@@ -43,6 +43,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                         ventas = VentasBLL.GetList(p => p.VentaId == this.ToInt(CriterioTextBox.Text));
                      break;
                     
+                    case 2:
+                        ventas = VentasBLL.GetList(p => p.ClienteId == this.ToInt(CriterioTextBox.Text));
+                    break;
                 
                 }
             }

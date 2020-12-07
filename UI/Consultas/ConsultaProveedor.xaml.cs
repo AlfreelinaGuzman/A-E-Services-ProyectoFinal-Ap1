@@ -50,6 +50,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                     case 1:
                         proveedores = ProveedoresBLL.GetList(p => p.ProveedorId == this.ToInt(CriterioTextBox.Text));
                         break;
+                    case 2:
+                        proveedores = ProveedoresBLL.GetList().Where(p => p.Nombres.Contains(CriterioTextBox.Text)).ToList();
+                        break;
+                    case 3:
+                        proveedores = ProveedoresBLL.GetList().Where(p => p.Cedula.Contains(CriterioTextBox.Text)).ToList();
+                        break;
                 }
             }
             else

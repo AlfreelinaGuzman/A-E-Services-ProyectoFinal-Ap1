@@ -50,6 +50,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                     case 1:
                         clientes = ClientesBLL.GetList(p => p.ClienteId == this.ToInt(CriterioTextBox.Text));
                         break;
+                    case 2:
+                        clientes = ClientesBLL.GetList().Where(p => p.Nombres.Contains(CriterioTextBox.Text)).ToList();
+                        break;
+                    case 3:
+                        clientes = ClientesBLL.GetList().Where(p => p.Cedula.Contains(CriterioTextBox.Text)).ToList();
+                        break;
                 }
             }
             else
