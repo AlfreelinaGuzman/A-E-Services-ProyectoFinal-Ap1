@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros"
         mc:Ignorable="d"
-        Title="Registrar Articulo" Height="800" Width="380" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Registrar Articulo" Height="590" Width="380" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation = "Vertical" Margin ="30,30">
             <StackPanel Orientation ="Vertical">
@@ -59,10 +59,7 @@
                 <Label Content="Modelo"/>
                 <ComboBox x:Name="ModeloComboBox" Width="300" HorizontalAlignment="Left"/>
             </StackPanel>
-            <StackPanel Orientation ="Vertical">
-                <Label Content="Precio" />
-                <TextBox x:Name="PrecioTextBox" HorizontalAlignment="Left" Width="300" Height="20" Text="{Binding Precio}" Margin="0,0,0,0"/>
-            </StackPanel>
+            
 
             <StackPanel Orientation ="Vertical">
                 <Label Content="Cantidad" />
@@ -76,10 +73,7 @@
             </StackPanel>
 
 
-            <StackPanel Orientation ="Vertical">
-                <Label Content="Minimo"/>
-                <TextBox x:Name="MinimoTextBox"  Width="300" Height="20" HorizontalAlignment="Left" Text="{Binding Minimo}" Margin="0,0,0,0"/>
-            </StackPanel>
+          
 
             <StackPanel Orientation ="Vertical">
                 <Label Content="Garantia"/>
