@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Ventas" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Consulta Ventas" Height="450" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
      <StackPanel Orientation="Vertical" Margin="10,5,10,0">
         <StackPanel Orientation="Horizontal" Height="58">

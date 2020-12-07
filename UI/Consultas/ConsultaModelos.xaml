@@ -43,7 +43,7 @@
 
         <StackPanel HorizontalAlignment="Left">
 
-            <DataGrid x:Name="DatosDataGrid" ItemsSource="{Binding Modelos}" Height="300" Width="700" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="DatosDataGrid" ItemsSource="{Binding Modelos}" Height="300" Width="664" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ModeloId" Binding="{Binding ModeloId}"/>
                     
