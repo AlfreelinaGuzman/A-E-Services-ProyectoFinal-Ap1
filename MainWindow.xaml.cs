@@ -81,9 +81,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             Ventana.Show();
         }
 
-        private void ConsultarProveedor_Click(object sender, RoutedEventArgs e)
+        private void ConsultarProveedores_Click(object sender, RoutedEventArgs e)
         {
-            ConsultaProveedor Ventana = new ConsultaProveedor();
+            ConsultaProveedores Ventana = new ConsultaProveedores();
             Ventana.Show();
         }
        /* void DataWindow_Closing(object sender, CancelEventArgs e)

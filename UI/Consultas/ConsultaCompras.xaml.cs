@@ -28,7 +28,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 
          public List<Compras> Compras { get; set; } = new List<Compras>();
 
-       private void ConsultarButton_Click(object sender, RoutedEComprargs e)
+       private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             //var listado = new List<Compras>();
 
@@ -60,7 +60,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
         {
             int retorno = 0;
 
-            int.TryParse(value,                                                                                      out retorno);
+            int.TryParse(value, out retorno);
 
             return retorno;
         }
