@@ -51,16 +51,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                         clientes = ClientesBLL.GetList(p => p.ClienteId == this.ToInt(CriterioTextBox.Text));
                         break;
                     case 2:
-                        clientes = ClientesBLL.GetList().Where(p => p.Nombres.Contains(CriterioTextBox.Text)).ToList();
+                        clientes = ClientesBLL.GetClientes().Where(p => p.Nombres.Contains(CriterioTextBox.Text)).ToList();
                         break;
                     case 3:
-                        clientes = ClientesBLL.GetList().Where(p => p.Cedula.Contains(CriterioTextBox.Text)).ToList();
+                        clientes = ClientesBLL.GetClientes().Where(p => p.Cedula.Contains(CriterioTextBox.Text)).ToList();
                         break;
                 }
-            }
-            else
-            {
-                clientes = ClientesBLL.GetList(c => true);
             }
 
             if (DesdeDatePicker.SelectedDate != null) {
@@ -69,6 +65,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 
             if (HastaDatePicker.SelectedDate != null) {
                 clientes = clientes.Where(r => r.FechaRegistro <= HastaDatePicker.SelectedDate).ToList();
+            }
+            else
+            {
+                clientes = ClientesBLL.GetList(c => true);
             }
 
             DatosDataGrid.ItemsSource = null;
@@ -84,9 +84,5 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             return retorno;
         }
 
-        private void DatosDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

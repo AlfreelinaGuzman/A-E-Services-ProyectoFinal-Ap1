@@ -15,8 +15,7 @@
                     <ComboBoxItem Content="Todo"/>
                     <ComboBoxItem Content="Proveedor Id"/>
                     <ComboBoxItem Content="Nombres"/>
-                    <ComboBoxItem Content="Cedula"/>
-                    
+                    <ComboBoxItem Content="Cedula"/> 
                 </ComboBox>
             </StackPanel>
 

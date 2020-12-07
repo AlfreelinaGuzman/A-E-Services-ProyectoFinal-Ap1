@@ -58,18 +58,21 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                         break;
                 }
             }
-            else
-            {
-                proveedores = ProveedoresBLL.GetList(c => true);
-            }
             
-            /*if (DesdeDatePicker.SelectedDate != null) {
+            if (DesdeDatePicker.SelectedDate != null) {
                 proveedores = proveedores.Where(r => r.FechaRegistro >= DesdeDatePicker.SelectedDate).ToList();
             }
 
             if (HastaDatePicker.SelectedDate != null) {
                 proveedores = proveedores.Where(r => r.FechaRegistro <= HastaDatePicker.SelectedDate).ToList();
-            }*/
+            }
+
+            else
+            {
+                proveedores = ProveedoresBLL.GetList(c => true);
+            }
+    
+            
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = proveedores;
         }

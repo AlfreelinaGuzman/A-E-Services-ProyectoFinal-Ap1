@@ -30,7 +30,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 
        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            //var listado = new List<Ventas>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
@@ -49,17 +48,18 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 
                 }
             }
-            else
-            {
-                ventas = VentasBLL.GetList(c => true);
-            }
-            
-            if (DesdeDatePicker.SelectedDate != null) {
+
+             if (DesdeDatePicker.SelectedDate != null) {
                 ventas = ventas.Where(r => r.Fecha >= DesdeDatePicker.SelectedDate).ToList();
             }
 
             if (HastaDatePicker.SelectedDate != null) {
                 ventas = ventas.Where(r => r.Fecha <= HastaDatePicker.SelectedDate).ToList();
+            }
+            
+            else
+            {
+                ventas = VentasBLL.GetList(c => true);
             }
 
             DatosDataGrid.ItemsSource = null;

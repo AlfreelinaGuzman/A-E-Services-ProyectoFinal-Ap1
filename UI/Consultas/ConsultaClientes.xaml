@@ -16,7 +16,6 @@
                     <ComboBoxItem Content="Cliente Id"/>
                     <ComboBoxItem Content="Nombres"/>
                     <ComboBoxItem Content= "Cedula"/>
-                    
                 </ComboBox>
             </StackPanel>
 

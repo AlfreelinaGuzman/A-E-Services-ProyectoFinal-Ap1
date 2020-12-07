@@ -16,7 +16,6 @@
                     <ComboBoxItem Content="Todo"/>
                     <ComboBoxItem Content="VentaId"/>
                     <ComboBoxItem Content="ClienteId"/>
-                    
                 </ComboBox>
             </StackPanel>
 
