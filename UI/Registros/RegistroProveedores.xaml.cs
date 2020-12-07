@@ -28,6 +28,8 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         public RegistroProveedores()
         {
            InitializeComponent();
+           this.DataContext = proveedores;
+
         }
 
         private void Limpiar()

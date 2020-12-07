@@ -338,8 +338,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");

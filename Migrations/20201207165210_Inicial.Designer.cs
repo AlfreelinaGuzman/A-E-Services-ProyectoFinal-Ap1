@@ -9,7 +9,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201207044248_Inicial")]
+    [Migration("20201207165210_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -340,8 +340,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");

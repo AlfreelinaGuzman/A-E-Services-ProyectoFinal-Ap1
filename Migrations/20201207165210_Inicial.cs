@@ -181,7 +181,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     VentaId = table.Column<int>(type: "INTEGER", nullable: false),
                     ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Cantidad = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
                     Monto = table.Column<decimal>(type: "TEXT", nullable: false)
                 },

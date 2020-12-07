@@ -50,6 +50,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             {
                 ventas = VentasBLL.GetList(c => true);
             }
+            
+            if (DesdeDatePicker.SelectedDate != null) {
+                ventas = ventas.Where(r => r.Fecha >= DesdeDatePicker.SelectedDate).ToList();
+            }
+
+            if (HastaDatePicker.SelectedDate != null) {
+                ventas = ventas.Where(r => r.Fecha <= HastaDatePicker.SelectedDate).ToList();
+            }
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = ventas;
