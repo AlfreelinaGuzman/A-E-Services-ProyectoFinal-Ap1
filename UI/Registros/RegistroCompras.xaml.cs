@@ -108,18 +108,21 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 MessageBox.Show("La cantidad no es valida");
                 return;
             }
-
+            var monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text);
+            Compra.Total = 0;
             var filaDetalle = new ComprasDetalles {
                 CompraId = this.Compra.CompraId ,
                 ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()) ,
                 //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text) ,
-                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)
-                // Compras.Total += Monto
+                Monto = monto
 
+
+                
             };
-            
-            //ComprasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
+            Compra.Total += monto;
+
+            ComprasBLL.AgregarArticulo(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
 
             this.Compra.Detalle.Add(filaDetalle);
             CalcularTotal();
@@ -148,6 +151,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                     Actualizar();
                     DetalleDataGrid.ItemsSource = null;
                     DetalleDataGrid.ItemsSource = Compra.Detalle;
+                    ComprasBLL.QuitarArticulo(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
                 }
             } catch {
                 MessageBox.Show("Por favor seleccione una Fila\n\nElija la Fila a Remover.");

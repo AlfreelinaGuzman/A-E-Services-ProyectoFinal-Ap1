@@ -15,7 +15,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public string NCF { get; set; }
         public decimal SubTotal { get; set; }
         public decimal TotalITBIs { get; set; }
-        public decimal Total { get; set; }
+        public decimal Total { get; set; } = 0;
 
         [ForeignKey("CompraId")]
         public List<ComprasDetalles> Detalle { get; set; } = new List<ComprasDetalles>(); 
