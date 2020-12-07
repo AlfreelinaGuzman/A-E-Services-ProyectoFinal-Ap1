@@ -10,7 +10,7 @@
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <StackPanel Orientation="Horizontal" Height="58">
-                
+
                 <StackPanel Margin="5,0">
                     <Label Content="Filtro:" />
                     <ComboBox x:Name="FiltroComboBox" Width="100">
@@ -25,9 +25,21 @@
                 </StackPanel>
 
                 <StackPanel Margin="5,0">
+                    <Label Content="Desde"/>
+                    <DatePicker x:Name="DesdeDatePicker"/>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Hasta"/>
+                    <DatePicker x:Name="HastaDatePicker"/>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
                     <Label Content="Critero:"/>
                     <TextBox x:Name="CriterioTextBox" Width="100"/>
                 </StackPanel>
+
+                
 
                 <StackPanel Margin="5,14"> 
                 <Button x:Name="BuscarButton" Height="30" Width="93" Click="ConsultarButton_Click" >

@@ -19,28 +19,28 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
-    public partial class ConsultaCompras : Window
+    public partial class ConsultaVentas : Window
     {
-        public ConsultaCompras()
+        public ConsultaVentas()
         {
             InitializeComponent();
         }
 
-         public List<Compras> listado { get; set; } = new List<Compras>();
+         public List<Ventas> ventas { get; set; } = new List<Ventas>();
 
        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            //var listado = new List<Compras>();
+            //var listado = new List<Ventas>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0:
-                        listado = ComprasBLL.GetList(c => true);
+                        ventas = VentasBLL.GetList(c => true);
                     break;
                     case 1:
-                        listado = ComprasBLL.GetList(p => p.CompraId == this.ToInt(CriterioTextBox.Text));
+                        ventas = VentasBLL.GetList(p => p.VentaId == this.ToInt(CriterioTextBox.Text));
                      break;
                     
                 
@@ -48,23 +48,19 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             }
             else
             {
-                listado = ComprasBLL.GetList(c => true);
+                ventas = VentasBLL.GetList(c => true);
+            }
+            
+            if (DesdeDatePicker.SelectedDate != null) {
+                ventas = ventas.Where(r => r.Fecha >= DesdeDatePicker.SelectedDate).ToList();
             }
 
-            if (DesdeDatePicker.SelectedDate != null)
-            {
-                listado = listado.Where(r => r.Fecha >= DesdeDatePicker.SelectedDate).ToList();
-            }
-
-            if (HastaDatePicker.SelectedDate != null)
-            {
-                listado = listado.Where(r => r.Fecha <= HastaDatePicker.SelectedDate).ToList();
+            if (HastaDatePicker.SelectedDate != null) {
+                ventas = ventas.Where(r => r.Fecha <= HastaDatePicker.SelectedDate).ToList();
             }
 
             DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = listado;
-
-            
+            DatosDataGrid.ItemsSource = ventas;
 
         }
 
@@ -72,7 +68,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
         {
             int retorno = 0;
 
-            int.TryParse(value, out retorno);
+            int.TryParse(value,                                                                                      out retorno);
 
             return retorno;
         }

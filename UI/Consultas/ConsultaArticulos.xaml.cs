@@ -62,8 +62,16 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             {
                 listado = ArticulosBLL.GetList(c => true);
             }
+            if (DesdeDatePicker.SelectedDate != null)
+            {
+                listado = listado.Where(r => r.Fecha >= DesdeDatePicker.SelectedDate).ToList();
+            }
 
-          
+            if (HastaDatePicker.SelectedDate != null)
+            {
+                listado = listado.Where(r => r.Fecha <= HastaDatePicker.SelectedDate).ToList();
+            }
+
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
         }

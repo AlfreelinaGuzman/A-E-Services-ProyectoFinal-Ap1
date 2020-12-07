@@ -132,7 +132,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 listado = UsuariosBLL.GetList(c => true);
             }
 
-          
+            if (DesdeDatePicker.SelectedDate != null)
+            {
+                listado = listado.Where(r => r.FechaCreacion >= DesdeDatePicker.SelectedDate).ToList();
+            }
+
+            if (HastaDatePicker.SelectedDate != null)
+            {
+                listado = listado.Where(r => r.FechaCreacion <= HastaDatePicker.SelectedDate).ToList();
+            }
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
         }
