@@ -142,6 +142,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 listado = listado.Where(r => r.FechaCreacion <= HastaDatePicker.SelectedDate).ToList();
             }
             DatosDataGrid.ItemsSource = null;
+            DatosDataGrid.Columns[5].Visibility = Visibility.Hidden;
             DatosDataGrid.ItemsSource = listado;
         }
     }

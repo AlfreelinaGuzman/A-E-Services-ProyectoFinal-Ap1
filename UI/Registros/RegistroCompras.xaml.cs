@@ -235,6 +235,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             return Validado;
         }
 
+
+
     }
 
 }
