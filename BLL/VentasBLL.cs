@@ -61,6 +61,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool Modificado = false;
             Contexto contexto = new Contexto();
             try{
+                contexto.Database.ExecuteSqlRaw($"Delete FROM VentasDetalle Where VentaId={ventas.VentaId}");
+                foreach (var anterior in ventas.VentasDetalle)
+                {
+                    contexto.Entry(anterior).State = EntityState.Added;
+                }
+                
                 contexto.Entry(ventas).State = EntityState.Modified;
                 Modificado = (contexto.SaveChanges()>0);
             }

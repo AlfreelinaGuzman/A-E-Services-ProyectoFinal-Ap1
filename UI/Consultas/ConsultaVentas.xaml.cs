@@ -37,9 +37,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0:
+                        ventas = VentasBLL.GetList(c => true);
+                    break;
+                    case 1:
                         ventas = VentasBLL.GetList(p => p.VentaId == this.ToInt(CriterioTextBox.Text));
-                        break;
-
+                     break;
+                    
                 
                 }
             }

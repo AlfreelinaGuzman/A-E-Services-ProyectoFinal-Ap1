@@ -35,10 +35,10 @@
             <Label Content= "NCF" HorizontalAlignment="Left" />
             <TextBox x:Name= "NCFTextBox" Width="200" Text= "{Binding NCF}" Height="25" HorizontalAlignment= "Left"/>
 
-            <!--ITBIS-->
+            <!--ITBIS
             <Label Content= "ITBIS" HorizontalAlignment="Left" />
             <TextBox x:Name= "ITBISTextBox" Width="200" Text= "{Binding ITBIS}" Height="25" HorizontalAlignment= "Left"/>
-
+            -->
             <!--SubTotal
            / <Label Content= "SubTotal" HorizontalAlignment="Left" />
             <TextBox x:Name= "SubTotalTextBox" Width="200" Text= "{Binding SubTotal}" Height="25" HorizontalAlignment= "Left"/>
@@ -78,6 +78,11 @@
                             <TextBox x:Name="CostoTextBox" Height="20" Width="70" TextChanged="CostoTextBox_TextChanged" />
                         </StackPanel>
 
+                        <StackPanel Orientation="Vertical" Margin="20,0,0,0" >
+                            <Label Content="ITBIS" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="ITBISTextBox" Height="20" Width="70" TextChanged="ITBISTextBox_TextChanged" />
+                        </StackPanel>
+
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                             <Label Content="Cantidad" HorizontalAlignment="Center"/>
                             <TextBox x:Name="CantidadTextBox" Height="20" Width="70" TextChanged="CantidadTextBox_TextChanged"/>
@@ -89,6 +94,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ArticuloId" Binding="{Binding ArticuloId}"/>
                         <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
+                        <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}"/>
                         <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
                     </DataGrid.Columns>
                 </DataGrid>

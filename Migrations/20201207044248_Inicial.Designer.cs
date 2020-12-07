@@ -9,7 +9,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201206182050_Inicial")]
+    [Migration("20201207044248_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -318,9 +318,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ITBIS")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("NCF")
                         .HasColumnType("REAL");
 
@@ -347,6 +344,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Costo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ITBIS")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")

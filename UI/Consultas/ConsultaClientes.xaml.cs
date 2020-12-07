@@ -21,7 +21,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
     public partial class ConsultaClientes : Window
     {
-        public List<Clientes> clientes { get; set; } = new List<Clientes>();
+        //public List<Clientes> clientes { get; set; } = new List<Clientes>();
 
         public ConsultaClientes()
         {
@@ -29,7 +29,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
         }
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-           // var listado = new List<Clientes>();
+            var clientes = new List<Clientes>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {

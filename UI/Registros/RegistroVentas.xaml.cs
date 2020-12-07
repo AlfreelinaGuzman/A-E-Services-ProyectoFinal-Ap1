@@ -110,6 +110,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
             this.DataContext = ventas;
         }
+
         private void AgregarButton_Click(object sender, RoutedEventArgs e) 
         {
             var filaDetalle = new VentasDetalle 
@@ -118,15 +119,20 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()),
                 //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Costo = Convert.ToDecimal(CostoTextBox.Text), 
-                Cantidad = Convert.ToDecimal(CantidadTextBox.Text)
-        };
+                Cantidad = Convert.ToDecimal(CantidadTextBox.Text),
+                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)
+               // ventas.Total += Monto
 
-            ventas.Total += Convert.ToDecimal(CostoTextBox.Text.ToString());
-         //ventas.Total *= Convert.ToDecimal(CantidadTextBox.text.ToDecimal());
+        };
+            //Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text);
+           // ventas.Total += Convert.ToDecimal(CantidadTextBox.text.ToString());
             this.ventas.VentasDetalle.Add(filaDetalle); 
+
             Actualizar();
+
             DetalleDataGrid.ItemsSource = null;
             DetalleDataGrid.ItemsSource = ventas.VentasDetalle;
+
             ArticuloIdComboBox.SelectedIndex = -1; 
             CostoTextBox.Clear(); 
             CantidadTextBox.Clear();
@@ -180,6 +186,19 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             MessageBox.Show($"Porfavor, digite un numero.");
             CostoTextBox.Clear();
             CostoTextBox.Focus(); 
+            } 
+    }
+
+private void ITBISTextBox_TextChanged(object sender, TextChangedEventArgs e) { 
+        try 
+        { 
+            if (ITBISTextBox.Text.Trim() != "") {
+                 decimal resultado = decimal.Parse(ITBISTextBox.Text);
+        }
+        } catch { 
+            MessageBox.Show($"Porfavor, digite un numero.");
+            ITBISTextBox.Clear();
+            ITBISTextBox.Focus(); 
             } 
     }
 

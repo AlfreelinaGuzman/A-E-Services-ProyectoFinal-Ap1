@@ -15,6 +15,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public int ArticuloId { get; set; }
         public decimal Costo { get; set; }
         public decimal Cantidad { get; set; }
-
+        public decimal ITBIS { get; set; }
+        public decimal Monto {get; set;}
     }
 }
