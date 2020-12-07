@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consultar Proveedor" Height="450" Width="650">
+        Title="Consultar Proveedor" Height="450" Width="750">
 <Grid>
     <StackPanel Orientation="Vertical" Margin="10,5,10,0">
         <StackPanel Orientation="Horizontal" Height="58">
@@ -22,6 +22,17 @@
                 <Label Content="Critero:"/>
                 <TextBox x:Name="CriterioTextBox" Width="100" Height="25"/>
             </StackPanel>
+
+             <StackPanel Margin="10,0">
+                <Label Content= "Desde"/>
+                <DatePicker x:Name="DesdeDatePicker"  Width="150px" Margin="5,0" />
+            </StackPanel>
+
+            <StackPanel Margin="10,0">
+                <Label Content= "Hasta"/>
+                <DatePicker x:Name="HastaDatePicker" Width="150px" Margin="5,0" />
+            </StackPanel>
+
             <Button x:Name="ConsultarButton" Height="30" Width="85" Margin="0,20,0,0" Click= "ConsultarButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source= "/Imagenes/Consultar.png"/>
@@ -32,7 +43,7 @@
 
         <StackPanel HorizontalAlignment="Left">
 
-            <DataGrid x:Name="DatosDataGrid" ItemsSource="{Binding poveedoresr}" Height="300" Width="600" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="DatosDataGrid" ItemsSource="{Binding poveedores}" Height="300" Width="700" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ProveedorId" Binding="{Binding ProveedorId}"/>
                     <DataGridTextColumn Header="Fecha" Binding="{Binding FechaRegistro}"/>

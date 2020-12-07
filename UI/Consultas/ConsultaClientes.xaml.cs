@@ -57,6 +57,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 clientes = ClientesBLL.GetList(c => true);
             }
 
+            if (DesdeDatePicker.SelectedDate != null) {
+                clientes = clientes.Where(r => r.FechaRegistro >= DesdeDatePicker.SelectedDate).ToList();
+            }
+
+            if (HastaDatePicker.SelectedDate != null) {
+                clientes = clientes.Where(r => r.FechaRegistro <= HastaDatePicker.SelectedDate).ToList();
+            }
+
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = clientes;
         }
