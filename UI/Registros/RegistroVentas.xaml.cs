@@ -62,7 +62,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+           if (!Validar())
+            {
+                return;
+            }
            /// bool paso = false;
+           ventas.ClienteId = (int) ClienteIdComboBox.SelectedValue;
             if (VentasBLL.Guardar(ventas))
             {
                 Limpiar();
@@ -97,31 +102,37 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
             if(anterior != null)
             {
-                ventas = anterior;
-                this.DataContext = ventas;
+                ventas = anterior; 
             }
             else
             {
                 MessageBox.Show("No se encontro");
             }
+            this.DataContext = ventas;
         }
+
         private void AgregarButton_Click(object sender, RoutedEventArgs e) 
         {
             var filaDetalle = new VentasDetalle 
             { 
                 VentaId = this.ventas.VentaId,
                 ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()),
-                Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
+                //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Costo = Convert.ToDecimal(CostoTextBox.Text), 
-                Cantidad = Convert.ToDecimal(CantidadTextBox.Text)
-        };
+                Cantidad = Convert.ToDecimal(CantidadTextBox.Text),
+                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)
+               // ventas.Total += Monto
 
-            ventas.Total += Convert.ToDecimal(CostoTextBox.Text.ToString());
-         //ventas.Total *= Convert.ToDecimal(CantidadTextBox.text.ToDecimal());
+        };
+            //Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text);
+           // ventas.Total += Convert.ToDecimal(CantidadTextBox.text.ToString());
             this.ventas.VentasDetalle.Add(filaDetalle); 
+
             Actualizar();
+
             DetalleDataGrid.ItemsSource = null;
             DetalleDataGrid.ItemsSource = ventas.VentasDetalle;
+
             ArticuloIdComboBox.SelectedIndex = -1; 
             CostoTextBox.Clear(); 
             CantidadTextBox.Clear();
@@ -175,15 +186,60 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             MessageBox.Show($"Porfavor, digite un numero.");
             CostoTextBox.Clear();
             CostoTextBox.Focus(); 
-            } }
+            } 
+    }
 
-    private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
+private void ITBISTextBox_TextChanged(object sender, TextChangedEventArgs e) { 
+        try 
+        { 
+            if (ITBISTextBox.Text.Trim() != "") {
+                 decimal resultado = decimal.Parse(ITBISTextBox.Text);
+        }
+        } catch { 
+            MessageBox.Show($"Porfavor, digite un numero.");
+            ITBISTextBox.Clear();
+            ITBISTextBox.Focus(); 
+            } 
+    }
+
+        private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
             var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;
             if (articulos != null) {
                 CostoTextBox.Text = articulos.Costo.ToString();
+                //ITBISTextBox.Text = articulos.ITBIS.ToString();
             }
         }
+    
+        private bool Validar() 
+        { 
+            bool Validado = true;  
+            string Mensaje = "";
 
-
+            if (VentaIdTextBox.Text.Length == 0) 
+            {
+                 Validado = false; 
+                 MessageBox.Show("Transaccion Fallida ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (ClienteIdComboBox.Text.Length == 0) 
+            {
+                 Validado = false; 
+                 MessageBox.Show("Transaccion Fallida en Cliente", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (string.IsNullOrWhiteSpace(NCFTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el NCF";
+            }
+             if (string.IsNullOrWhiteSpace(ITBISTextBox.Text))
+            {
+                Validado = false; 
+                Mensaje += "Ingrese el % de Itbis";
+            }
+          
+            if(Validado == false){
+                MessageBox.Show(Mensaje, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return Validado; 
+        }
     }
     }

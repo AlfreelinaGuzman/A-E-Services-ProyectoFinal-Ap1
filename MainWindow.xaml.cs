@@ -68,16 +68,29 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             ConsultaUsuarios RU = new ConsultaUsuarios();
             RU.Show();
         }
+
+         private void ConsultarClientes_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaClientes Ventana = new ConsultaClientes();
+            Ventana.Show();
+        }
+
         private void ConsultarVentas_Click(object sender, RoutedEventArgs e)
         {
             ConsultaVentas Ventana = new ConsultaVentas();
             Ventana.Show();
         }
-        void DataWindow_Closing(object sender, CancelEventArgs e)
+
+        private void ConsultarProveedor_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaProveedor Ventana = new ConsultaProveedor();
+            Ventana.Show();
+        }
+       /* void DataWindow_Closing(object sender, CancelEventArgs e)
         {
 
             this.Close();
             // If data is dirty, notify user and ask for a response
-        }
+        }*/
     }
 }

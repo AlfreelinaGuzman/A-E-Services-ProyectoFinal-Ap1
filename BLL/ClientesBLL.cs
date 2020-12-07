@@ -12,7 +12,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class ClientesBLL
     {
-
         public static bool Guardar(Clientes clientes)
         {
             if (!Existe(clientes.ClienteId))
@@ -43,13 +42,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         private static bool Insertar(Clientes clientes)
         {
-            bool paso = false;
+            //bool paso = false;
             Contexto contexto = new Contexto();
+            bool esOk = false;
             try
             {
                 contexto.Clientes.Add(clientes);
-                paso = contexto.SaveChanges() > 0;
-
+                esOk = (contexto.SaveChanges() > 0);
             }
             catch (Exception)
             {
@@ -59,7 +58,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Dispose();
             }
-            return paso;
+            return esOk;
         }
 
         public static bool Modificar(Clientes clientes)
@@ -108,7 +107,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static Clientes Buscar(int id)
         {
-            Clientes clientes = new Clientes();
+            Clientes clientes;
             Contexto contexto = new Contexto();
             try
             {

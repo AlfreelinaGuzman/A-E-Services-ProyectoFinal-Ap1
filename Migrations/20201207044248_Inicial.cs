@@ -134,7 +134,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NCF = table.Column<float>(type: "REAL", nullable: false),
-                    ITBIS = table.Column<int>(type: "INTEGER", nullable: false),
                     Total = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -182,17 +181,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     VentaId = table.Column<int>(type: "INTEGER", nullable: false),
                     ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Cantidad = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Cantidad = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Monto = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VentasDetalle", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_VentasDetalle_Articulos_ArticuloId",
-                        column: x => x.ArticuloId,
-                        principalTable: "Articulos",
-                        principalColumn: "ArticuloId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_VentasDetalle_Ventas_VentaId",
                         column: x => x.VentaId,
@@ -277,11 +272,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VentasDetalle_ArticuloId",
-                table: "VentasDetalle",
-                column: "ArticuloId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalle_VentaId",
                 table: "VentasDetalle",
                 column: "VentaId");
@@ -289,6 +279,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Articulos");
+
             migrationBuilder.DropTable(
                 name: "ComprasDetalles");
 
@@ -309,9 +302,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Compras");
-
-            migrationBuilder.DropTable(
-                name: "Articulos");
 
             migrationBuilder.DropTable(
                 name: "Ventas");

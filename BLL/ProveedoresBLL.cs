@@ -12,7 +12,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class ProveedoresBLL
     {
-
         public static bool Guardar(Proveedores proveedores)
         {
             if (!Existe(proveedores.ProveedorId))
@@ -81,7 +80,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             {
                 contexto.Dispose();
             }
-
             /* try{
                  contexto.Database.ExecuteSqlRaw($"Delete FROM OrdenesDetalle Where OrdenID = {suplidores.SuplidorID}");
                  foreach(var anterior in suplidores.OrdenesDetalle)
@@ -126,7 +124,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 
         public static Proveedores Buscar(int id)
         {
-            Proveedores proveedores = new Proveedores();
+            Proveedores proveedores;
             Contexto contexto = new Contexto();
             try
             {

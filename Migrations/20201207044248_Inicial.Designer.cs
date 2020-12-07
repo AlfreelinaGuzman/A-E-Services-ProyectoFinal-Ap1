@@ -9,7 +9,7 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201205233448_Inicial")]
+    [Migration("20201207044248_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -318,9 +318,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ITBIS")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("NCF")
                         .HasColumnType("REAL");
 
@@ -349,12 +346,16 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("ITBIS")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ArticuloId");
 
                     b.HasIndex("VentaId");
 
@@ -383,19 +384,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.VentasDetalle", b =>
                 {
-                    b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Articulos", "Articulos")
-                        .WithMany()
-                        .HasForeignKey("ArticuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Ventas", null)
                         .WithMany("VentasDetalle")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Articulos");
                 });
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", b =>

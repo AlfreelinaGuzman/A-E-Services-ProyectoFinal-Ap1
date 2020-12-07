@@ -1,21 +1,19 @@
-<Window x:Class="WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas.ConsultaVentas"
+<Window x:Class="WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas.ConsultaProveedor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Ventas" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Grid>
-     <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+        Title="Consultar Proveedor" Height="450" Width="650">
+<Grid>
+    <StackPanel Orientation="Vertical" Margin="10,5,10,0">
         <StackPanel Orientation="Horizontal" Height="58">
-            
             <StackPanel Margin="5,0">
                 <Label Content="Filtro:"/>
                 <ComboBox x:Name="FiltroComboBox" Width="100" Height="25">
                     <ComboBoxItem Content="Todo"/>
-                    <ComboBoxItem Content="VentaId"/>
-                    <ComboBoxItem Content="ClienteId"/>
+                    <ComboBoxItem Content="Proveedor Id"/>
                     
                 </ComboBox>
             </StackPanel>
@@ -24,8 +22,7 @@
                 <Label Content="Critero:"/>
                 <TextBox x:Name="CriterioTextBox" Width="100" Height="25"/>
             </StackPanel>
-           
-           <Button x:Name="ConsultarButton" Height="30" Width="85" Margin="0,20,0,0" Click= "ConsultarButton_Click" >
+            <Button x:Name="ConsultarButton" Height="30" Width="85" Margin="0,20,0,0" Click= "ConsultarButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source= "/Imagenes/Consultar.png"/>
                     <Label Content="Consultar"/>
@@ -34,15 +31,20 @@
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left">
-            <DataGrid x:Name="DatosDataGrid" Height="300" Width="600" AutoGenerateColumns="False" IsReadOnly="True">
+
+            <DataGrid x:Name="DatosDataGrid" ItemsSource="{Binding poveedoresr}" Height="300" Width="600" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="VentaId" Binding="{Binding VentaId}"/>
-                    <DataGridTextColumn Header="ClienteId" Binding="{Binding ClienteId}"/>
-                    <DataGridTextColumn Header="NCF" Binding="{Binding NCF}"/>
-                    <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
+                    <DataGridTextColumn Header="ProveedorId" Binding="{Binding ProveedorId}"/>
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding FechaRegistro}"/>
+                    <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                    <DataGridTextColumn Header="Cedula" Binding="{Binding Cedula}"/>
+                    <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
+                    <DataGridTextColumn Header="Celular" Binding="{Binding Celular}"/>
+                    <DataGridTextColumn Header="Direccion" Binding="{Binding Direccion}"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding EMail}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </StackPanel>
-    </Grid>
-</Window>
+</Grid>
+</Window>   

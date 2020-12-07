@@ -7,14 +7,15 @@
         mc:Ignorable="d"
         Title="Registro de Ventas" Height="660" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <StackPanel Orientation= "Vertical" Margin="10,10,10,10">
+       <StackPanel Orientation= "Vertical" Margin="10,10,10,10">
             <StackPanel Orientation= "Horizontal">
+                
                 <!--ID-->
                 <Label Content= "VentaId" HorizontalAlignment="Left" />
-                <TextBox x:Name= "VentaIdTextBox" Width="100" Text= "{Binding FacturaId}" Height= "20" HorizontalAlignment= "Left"/>
+                <TextBox x:Name= "VentaIdTextBox" Width="100" Text= "{Binding VentaId}" Height= "20" HorizontalAlignment= "Left"/>
 
                 <!--Boton Buscar-->
-                <Button x:Name ="BuscarButton" Margin="10,0" Width = "70" Height = "30" >
+                <Button x:Name ="BuscarButton" Margin="10,0" Width = "70" Height = "30" Click="BuscarButton_Click" >
                     <StackPanel Orientation= "Horizontal">
                         <Image Source= "/Imagenes/Buscar.png" Width="20" Height= "20"/>
                         <Label Content=" Buscar"/>
@@ -34,10 +35,10 @@
             <Label Content= "NCF" HorizontalAlignment="Left" />
             <TextBox x:Name= "NCFTextBox" Width="200" Text= "{Binding NCF}" Height="25" HorizontalAlignment= "Left"/>
 
-            <!--ITBIS-->
+            <!--ITBIS
             <Label Content= "ITBIS" HorizontalAlignment="Left" />
             <TextBox x:Name= "ITBISTextBox" Width="200" Text= "{Binding ITBIS}" Height="25" HorizontalAlignment= "Left"/>
-
+            -->
             <!--SubTotal
            / <Label Content= "SubTotal" HorizontalAlignment="Left" />
             <TextBox x:Name= "SubTotalTextBox" Width="200" Text= "{Binding SubTotal}" Height="25" HorizontalAlignment= "Left"/>
@@ -77,31 +78,33 @@
                             <TextBox x:Name="CostoTextBox" Height="20" Width="70" TextChanged="CostoTextBox_TextChanged" />
                         </StackPanel>
 
+                        <StackPanel Orientation="Vertical" Margin="20,0,0,0" >
+                            <Label Content="ITBIS" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="ITBISTextBox" Height="20" Width="70" TextChanged="ITBISTextBox_TextChanged" />
+                        </StackPanel>
+
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                             <Label Content="Cantidad" HorizontalAlignment="Center"/>
                             <TextBox x:Name="CantidadTextBox" Height="20" Width="70" TextChanged="CantidadTextBox_TextChanged"/>
                         </StackPanel>
 
-                        <!--<StackPanel Orientation="Vertical">
-      <Label Content="Total" Margin="5,0" /> 
-      <TextBox x:Name="TotalTextBox" Height="22" Margin="10,0" TextChanged="TotalTextBox_TextChanged"/>
-      </StackPanel> -->
-
-                    </StackPanel>
-                </GroupBox>
-            </StackPanel>
-            
-            <!--DataGrid-->
-            <StackPanel Orientation= "Horizontal" >
+                        <!--DataGrid-->
+            <StackPanel Orientation= "Vertical" Margin="-240,55,50,50" >
                 <DataGrid x:Name="DetalleDataGrid"  AutoGenerateColumns="False" Height="100" Width="400" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ArticuloId" Binding="{Binding ArticuloId}"/>
                         <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
+                        <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}"/>
                         <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
 
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            
+            
             <StackPanel Orientation= "Horizontal" Margin="65,10,0,0" HorizontalAlignment="Left" >
                 <Label Content="Total" Margin="220,0,0,0" />
                 <TextBox x:Name="TotalTextBox" Text="{Binding Total}" Width="80" IsReadOnly="True" VerticalContentAlignment="Center"/>
