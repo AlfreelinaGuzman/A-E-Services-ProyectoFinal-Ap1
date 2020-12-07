@@ -202,10 +202,11 @@ private void ITBISTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             } 
     }
 
-    private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
+        private void ArticuloIdComboBox_SelectionChanged(object sender , SelectionChangedEventArgs e) {
             var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;
             if (articulos != null) {
                 CostoTextBox.Text = articulos.Costo.ToString();
+                //ITBISTextBox.Text = articulos.ITBIS.ToString();
             }
         }
     
