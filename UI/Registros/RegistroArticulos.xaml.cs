@@ -35,6 +35,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             ModeloComboBox.ItemsSource = ModelosBLL.GetModelos();
             ModeloComboBox.SelectedValuePath = "ModeloId";
             ModeloComboBox.DisplayMemberPath = "Modelo";
+
+            ProveedorComboBox.ItemsSource = ProveedoresBLL.GetList();
+            ProveedorComboBox.SelectedValuePath = "ProveedorId";
+            ProveedorComboBox.DisplayMemberPath = "ProveedoId";
         }
 
         private bool Validar()

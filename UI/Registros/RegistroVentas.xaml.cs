@@ -64,7 +64,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
             if (!Validar()) {
                 return;
             }
-            /// bool paso = false;
+            
             ventas.ClienteId = (int) ClienteIdComboBox.SelectedValue;
             if (VentasBLL.Guardar(ventas)) {
                 Limpiar();
@@ -120,6 +120,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
                 // ventas.Total += Monto
 
             };
+            
+            //VentasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
+
             this.ventas.VentasDetalle.Add(filaDetalle);
             CalcularTotal();
 

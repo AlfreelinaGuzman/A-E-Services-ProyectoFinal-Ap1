@@ -152,5 +152,28 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             return Lista;
         }
 
+    public static void RestaCantidad(int id, int cant)
+    {
+        Contexto contexto = new Contexto();
+        Articulos articulo = new Articulos();
+        articulo = ArticulosBLL.Buscar(id);
+        
+        try
+            {
+                articulo.Cantidad -= cant;
+                contexto.Entry(articulo).State = EntityState.Modified;
+               // articulo = (contexto.SaveChanges() > 0);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+    }
+
     }
 }
