@@ -19,11 +19,11 @@ using System.Windows.Shapes;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
 {
-    public partial class ConsultaProveedor : Window
+    public partial class ConsultaProveedores : Window
     {
         public List<Proveedores> proveedores { get; set; } = new List<Proveedores>();
 
-        public ConsultaProveedor()
+        public ConsultaProveedores()
         {
             InitializeComponent();
         }
@@ -63,13 +63,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
                 proveedores = ProveedoresBLL.GetList(c => true);
             }
             
-            if (DesdeDatePicker.SelectedDate != null) {
+            /*if (DesdeDatePicker.SelectedDate != null) {
                 proveedores = proveedores.Where(r => r.FechaRegistro >= DesdeDatePicker.SelectedDate).ToList();
             }
 
             if (HastaDatePicker.SelectedDate != null) {
                 proveedores = proveedores.Where(r => r.FechaRegistro <= HastaDatePicker.SelectedDate).ToList();
-            }
+            }*/
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = proveedores;
         }

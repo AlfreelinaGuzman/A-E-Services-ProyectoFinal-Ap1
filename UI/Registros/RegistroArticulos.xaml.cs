@@ -50,6 +50,31 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            if (Convert.ToInt32(CantidadTextBox.Text)<=0)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (NombreTextBox.Text.Length == 0)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (DescripcionTextBox.Text.Length == 0)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (Convert.ToDecimal(CostoTextBox.Text)<=0)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+
             return Validado;
         }
 

@@ -18,5 +18,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public int Cantidad { get; set; }
         public decimal Costo { get; set; }
         public decimal Garantia { get; set; }
+        //public decimal ITBIs { get; set; }
     }
 }

@@ -102,7 +102,39 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             }
             return paso;
         }
+        public static void AgregarArticulo(int articuloId, int cantidad)
+        {
+            try
+            {
+                Articulos Articulo = ArticulosBLL.Buscar(articuloId);
+                Articulo.Cantidad += cantidad;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                //contexto.Dispose();
+            }
+        }
 
+        public static void QuitarArticulo(int articuloId, int cantidad)
+        {
+            try
+            {
+                Articulos Articulo = ArticulosBLL.Buscar(articuloId);
+                Articulo.Cantidad += cantidad;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                //contexto.Dispose();
+            }
+        }
         public static Compras Buscar(int id)
         {
             Contexto contexto = new Contexto();
