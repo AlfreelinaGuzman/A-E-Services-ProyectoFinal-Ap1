@@ -62,8 +62,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             {
                 listado = ModelosBLL.GetList(c => true);
             }
+           
 
-          
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
         }
