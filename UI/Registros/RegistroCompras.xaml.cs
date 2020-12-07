@@ -29,7 +29,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         public RegistroCompras()
         {
             InitializeComponent();
-            
+            ProveedorComboBox.ItemsSource = ProveedoresBLL.GetList();
+            ProveedorComboBox.SelectedValuePath = "ProveedoresId";
+            ProveedorComboBox.DisplayMemberPath = "Nombre";
+            ArticuloComboBox.ItemsSource = ArticulosBLL.GetList();
+            ArticuloComboBox.SelectedValuePath = "ArticuloId";
+            ArticuloComboBox.DisplayMemberPath = "Nombre";
+            MonedaComboBox.ItemsSource = MonedasBLL.GetList();
+            MonedaComboBox.SelectedValuePath = "MonedaId";
+            MonedaComboBox.DisplayMemberPath = "Tipo";
             
         }
 

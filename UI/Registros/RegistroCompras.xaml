@@ -8,7 +8,7 @@
         
         Title="Registrar Compra" Height="510" Width="400" >
     <Grid>
-        <!--<StackPanel Orientation = "Vertical" Margin ="30,30" >
+        <StackPanel Orientation = "Vertical" Margin ="30,30" >
             <StackPanel Orientation ="Vertical">
 
 
@@ -136,6 +136,6 @@
             </StackPanel>
 
         </StackPanel>
-        -->
+        
     </Grid>
 </Window>
