@@ -22,8 +22,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
@@ -36,6 +36,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
                     b.Property<decimal>("Garantia")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("MarcaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ModeloId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ArticuloId");
 

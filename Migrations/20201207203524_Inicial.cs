@@ -14,8 +14,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     ArticuloId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MarcaId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ModeloId = table.Column<int>(type: "INTEGER", nullable: false),
                     Decripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    Cantidad = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
                     Garantia = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
