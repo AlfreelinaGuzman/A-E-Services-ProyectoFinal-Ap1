@@ -9,8 +9,8 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201207203524_Inicial")]
-    partial class Inicial
+    [Migration("20201208004139_Migracion")]
+    partial class Migracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Garantia")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ITBIs")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("MarcaId")
@@ -132,10 +135,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<string>("Decripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("ITBIS")
+                    b.Property<decimal>("Importe")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Importe")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Precio")

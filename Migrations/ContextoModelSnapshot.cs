@@ -37,6 +37,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<decimal>("Garantia")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("ITBIs")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("MarcaId")
                         .HasColumnType("INTEGER");
 
@@ -130,10 +133,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<string>("Decripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("ITBIS")
+                    b.Property<decimal>("Importe")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Importe")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Precio")
