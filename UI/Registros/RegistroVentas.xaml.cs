@@ -35,7 +35,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
 
             ClienteIdComboBox.ItemsSource = ClientesBLL.GetClientes();
             ClienteIdComboBox.SelectedValuePath = "ClienteId";
-            ClienteIdComboBox.DisplayMemberPath = "ClienteId";
+            ClienteIdComboBox.DisplayMemberPath = "Nombres";
 
         }
 
