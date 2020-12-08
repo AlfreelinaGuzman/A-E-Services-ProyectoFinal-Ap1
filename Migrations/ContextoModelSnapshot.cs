@@ -362,6 +362,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("PorcientoItbis")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
 

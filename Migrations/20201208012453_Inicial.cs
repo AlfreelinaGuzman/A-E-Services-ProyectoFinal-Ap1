@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
-    public partial class Migracion : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -187,7 +187,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
                     Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Monto = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Monto = table.Column<decimal>(type: "TEXT", nullable: false),
+                    PorcientoItbis = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

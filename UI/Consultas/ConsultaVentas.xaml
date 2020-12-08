@@ -47,6 +47,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="VentaId" Binding="{Binding VentaId}"/>
                     <DataGridTextColumn Header="ClienteId" Binding="{Binding ClienteId}"/>
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
                     <DataGridTextColumn Header="NCF" Binding="{Binding NCF}"/>
                     <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
                 </DataGrid.Columns>

@@ -104,21 +104,24 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
         }
 
         private void AgregarButton_Click(object sender , RoutedEventArgs e) {
+
             
             if (!int.TryParse(CantidadTextBox.Text, out int cantidad)) {
                 MessageBox.Show("La cantidad no es valida");
                 return;
             }
+             
+             //decimal itbis ;
 
             var filaDetalle = new VentasDetalle {
                 VentaId = this.ventas.VentaId ,
                 ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()) ,
-                //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Costo = Convert.ToDecimal(CostoTextBox.Text) ,
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text) ,
-                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)
-                // ventas.Total += Monto
-
+                ITBIS = Convert.ToDecimal(ITBISTextBox.Text),
+                //PorcientoItbis = Convert.ToDecimal(ITBISTextBox.Text) / 100,
+                Monto  = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text) * ((Convert.ToDecimal(ITBISTextBox.Text) / 100)+1)
+                
             };
             
            // VentasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()), Convert.ToInt32(CantidadTextBox.Text));
@@ -132,6 +135,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
             ArticuloIdComboBox.SelectedIndex = -1;
             CostoTextBox.Clear();
             CantidadTextBox.Clear();
+            ITBISTextBox.Clear();
         }
 
         private void CalcularTotal() {
@@ -146,8 +150,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
                 decimal total = Convert.ToDecimal(TotalTextBox.Text);
                 if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1) {
                     ventas.VentasDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-                    ventas.Total -= total;
+                    //ventas.Total -= total;
+                    CalcularTotal();
+
                     Actualizar();
+
                     DetalleDataGrid.ItemsSource = null;
                     DetalleDataGrid.ItemsSource = ventas.VentasDetalle;
                 }
@@ -202,7 +209,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
             var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;
             if (articulos != null) {
                 CostoTextBox.Text = articulos.Costo.ToString();
-                //ITBISTextBox.Text = articulos.ITBIS.ToString();
+                ITBISTextBox.Text = articulos.ITBIs.ToString();
             }
         }
 
@@ -222,10 +229,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
                 Validado = false;
                 Mensaje += "Ingrese el NCF";
             }
-            if (string.IsNullOrWhiteSpace(ITBISTextBox.Text)) {
+            /*if (string.IsNullOrWhiteSpace(ITBISTextBox.Text)) {
                 Validado = false;
                 Mensaje += "Ingrese el % de Itbis";
-            }
+            }*/
 
             if (Validado == false) {
                 MessageBox.Show(Mensaje , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
