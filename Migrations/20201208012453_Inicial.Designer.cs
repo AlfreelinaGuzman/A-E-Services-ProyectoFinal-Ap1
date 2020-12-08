@@ -9,8 +9,8 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201208004139_Migracion")]
-    partial class Migracion
+    [Migration("20201208012453_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -362,6 +362,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Monto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PorcientoItbis")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")

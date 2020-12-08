@@ -86,9 +86,5 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Consultas
             return retorno;
         }
 
-        private void DatosDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

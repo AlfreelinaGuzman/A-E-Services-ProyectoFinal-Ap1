@@ -80,7 +80,7 @@
 
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0" >
                             <Label Content="ITBIS" HorizontalAlignment="Center"/>
-                            <TextBox x:Name="ITBISTextBox"  Height="20" Width="70" TextChanged="ITBISTextBox_TextChanged" />
+                            <TextBox x:Name="ITBISTextBox" IsReadOnly="True" Height="20" Width="70" TextChanged="ITBISTextBox_TextChanged" />
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0">
