@@ -9,8 +9,8 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201208012453_Inicial")]
-    partial class Inicial
+    [Migration("20201208064251_Migracion")]
+    partial class Migracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Decripcion")
+                    b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
@@ -94,14 +94,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NCF")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("TEXT");
@@ -126,8 +126,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cantidad")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CompraId")
                         .HasColumnType("INTEGER");

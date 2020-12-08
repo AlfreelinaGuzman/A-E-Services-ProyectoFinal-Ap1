@@ -14,7 +14,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         public int ProveedorId { get; set; }
         public int MarcaId { get; set; }
         public int ModeloId { get; set; }
-        public string Decripcion { get; set; }
+        public string Descripcion { get; set; }
         public int Cantidad { get; set; }
         public decimal Costo { get; set; }
         public decimal Garantia { get; set; }

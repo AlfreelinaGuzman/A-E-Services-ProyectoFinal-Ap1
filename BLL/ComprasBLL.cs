@@ -42,7 +42,18 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool paso = false;
             try
             {
-                if (contexto.Compras.Add(Compra) != null) { paso = (contexto.SaveChanges() > 0); }
+                if (contexto.Compras.Add(Compra) != null) 
+                {
+                    
+                    foreach (var item in Compra.Detalle)
+                    {
+                        Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
+                        ArticulosBLL.Guardar(articulo);
+                        articulo.Cantidad += item.Cantidad;
+                    }
+                    paso = (contexto.SaveChanges() > 0); 
+                }
+
             }
             catch (Exception)
             {
@@ -61,10 +72,24 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             bool paso = false;
             try
             {
+                var Anterior = contexto.Compras.Find(Compra.CompraId);
+                foreach (var item in Compra.Detalle)
+                {
+                    Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
+                    articulo.Cantidad -= item.Cantidad;
+                    ArticulosBLL.Guardar(articulo);
+                }
                 contexto.Database.ExecuteSqlRaw($"Delete FROM ProductosDetalle Where TareaId={Compra.CompraId}");
+
                 foreach (var item in Compra.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
+                }
+                foreach (var item in Compra.Detalle)
+                {
+                    Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
+                    articulo.Cantidad += item.Cantidad;
+                    ArticulosBLL.Guardar(articulo);
                 }
                 paso = (contexto.SaveChanges() > 0);
             }
@@ -88,6 +113,12 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
                 var Compra = contexto.Compras.Find(id);
                 if (Compra != null)
                 {
+                    foreach (var item in Compra.Detalle)
+                    {
+                        Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
+                        articulo.Cantidad -= item.Cantidad;
+                        ArticulosBLL.Guardar(articulo);
+                    }
                     contexto.Compras.Remove(Compra);
                     paso = (contexto.SaveChanges() > 0);
                 }

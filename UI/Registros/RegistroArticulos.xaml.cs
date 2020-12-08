@@ -38,7 +38,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
             ProveedorComboBox.ItemsSource = ProveedoresBLL.GetList();
             ProveedorComboBox.SelectedValuePath = "ProveedorId";
-            ProveedorComboBox.DisplayMemberPath = "ProveedoId";
+            ProveedorComboBox.DisplayMemberPath = "Nombres";
         }
 
         private bool Validar()
@@ -56,11 +56,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            if (NombreTextBox.Text.Length == 0)
-            {
-                Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
 
             if (DescripcionTextBox.Text.Length == 0)
             {
@@ -81,7 +77,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         private void Limpiar()
         {
             this.Articulo = new Articulos();
+            MarcaComboBox.SelectedIndex = -1;
+            ModeloComboBox.SelectedIndex = -1;
             this.DataContext = Articulo;
+
         }
 
         private void BuscarButton_click(object sender, RoutedEventArgs e)
@@ -94,6 +93,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Limpiar();
 
             }
+            MarcaComboBox.SelectedIndex=Convert.ToInt32(Articulo.MarcaId);
+            ModeloComboBox.SelectedIndex =  Convert.ToInt32(Articulo.ModeloId);
+            ProveedorComboBox.SelectedIndex= Convert.ToInt32(Articulo.ProveedorId);
             this.DataContext = Articulo;
         }
 
@@ -106,6 +108,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validar())
+                return;
+            Articulo.MarcaId = Convert.ToInt32(MarcaComboBox.SelectedIndex);
+            Articulo.ModeloId = Convert.ToInt32(ModeloComboBox.SelectedIndex);
+            Articulo.ProveedorId = Convert.ToInt32(ProveedorComboBox.SelectedIndex);
             var paso = ArticulosBLL.Guardar(Articulo);
             if (paso)
             {

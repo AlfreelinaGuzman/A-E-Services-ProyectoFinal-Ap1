@@ -11,7 +11,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
         [Key]
         public int CompraId { get; set; }
         public DateTime Fecha { get; set; }
-        public int ClienteId { get; set; }
+        public int ProveedorId { get; set; }
         public string NCF { get; set; }
         public decimal SubTotal { get; set; }
         public decimal TotalITBIs { get; set; }

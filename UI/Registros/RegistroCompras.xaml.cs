@@ -31,11 +31,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             InitializeComponent();
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
-            ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
+            ArticuloIdComboBox.DisplayMemberPath = "Descripcion";
 
-            ClienteIdComboBox.ItemsSource = ClientesBLL.GetClientes();
-            ClienteIdComboBox.SelectedValuePath = "ClienteId";
-            ClienteIdComboBox.DisplayMemberPath = "ClienteId";
+            ProveedorIdComboBox.ItemsSource = ProveedoresBLL.GetList();
+            ProveedorIdComboBox.SelectedValuePath = "ProveedorId";
+            ProveedorIdComboBox.DisplayMemberPath = "Nombres";
             
         }
 
@@ -64,7 +64,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 return;
             }
             
-            Compra.ClienteId = (int) ClienteIdComboBox.SelectedValue;
+            Compra.ProveedorId = (int) ProveedorIdComboBox.SelectedValue;
             if (ComprasBLL.Guardar(Compra)) {
                 Limpiar();
                 MessageBox.Show("Guardado!" , "Exito" ,
@@ -108,22 +108,18 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 MessageBox.Show("La cantidad no es valida");
                 return;
             }
-            var monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text);
-            Compra.Total = 0;
+           
             var filaDetalle = new ComprasDetalles {
                 CompraId = this.Compra.CompraId ,
-                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()) ,
+                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedIndex) ,
                 //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
-                Cantidad = Convert.ToInt32(CantidadTextBox.Text) ,
-                Monto = monto
+                Cantidad = Convert.ToInt32(CantidadTextBox.Text), //Convert.ToInt32(CantidadTextBox.Text)
 
-
-                
+                ITBIS = Convert.ToDecimal(ITBISTextBox.Text),
+                //PorcientoItbis = Convert.ToDecimal(ITBISTextBox.Text) / 100,
+                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text) * ((Convert.ToDecimal(ITBISTextBox.Text) / 100) + 1)
             };
-            Compra.Total += monto;
-
-            ComprasBLL.AgregarArticulo(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
-
+           
             this.Compra.Detalle.Add(filaDetalle);
             CalcularTotal();
 
@@ -176,6 +172,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
         }
 
+   
+
         private void CostoTextBox_TextChanged(object sender , TextChangedEventArgs e) {
             try {
                 if (CostoTextBox.Text.Trim() != "") {
@@ -216,9 +214,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida " , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
             }
-            if (ClienteIdComboBox.Text.Length == 0) {
+            if (ProveedorIdComboBox.Text.Length == 0) {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida en Cliente" , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida en Proveedor" , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
             }
             if (string.IsNullOrWhiteSpace(NCFTextBox.Text)) {
                 Validado = false;
@@ -235,8 +233,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             return Validado;
         }
 
+        private void DetalleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-
+        }
     }
 
 }

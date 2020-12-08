@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Migracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
                     MarcaId = table.Column<int>(type: "INTEGER", nullable: false),
                     ModeloId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Decripcion = table.Column<string>(type: "TEXT", nullable: true),
+                    Descripcion = table.Column<string>(type: "TEXT", nullable: true),
                     Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     Costo = table.Column<decimal>(type: "TEXT", nullable: false),
                     Garantia = table.Column<decimal>(type: "TEXT", nullable: false),
@@ -54,7 +54,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     CompraId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
                     NCF = table.Column<string>(type: "TEXT", nullable: true),
                     SubTotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     TotalITBIs = table.Column<decimal>(type: "TEXT", nullable: false),
@@ -161,7 +161,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
                     Decripcion = table.Column<string>(type: "TEXT", nullable: true),
                     Precio = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Cantidad = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
                     Importe = table.Column<decimal>(type: "TEXT", nullable: false),
                     Monto = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
