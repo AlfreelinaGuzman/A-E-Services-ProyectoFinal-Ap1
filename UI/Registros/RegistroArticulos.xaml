@@ -72,8 +72,11 @@
                 <TextBox x:Name="CostoTextBox"  HorizontalAlignment="Left" Width="300" Height="20" Text="{Binding Costo}" Margin="0,0,0,0"/>
             </StackPanel>
 
+            <StackPanel Orientation ="Vertical">
+                <Label Content="ITBIs" />
+                <TextBox x:Name="ITBIsTextBox"  HorizontalAlignment="Left" Width="300" Height="20" Text="{Binding ITBIs}" Margin="0,0,0,0"/>
+            </StackPanel>
 
-          
 
             <StackPanel Orientation ="Vertical">
                 <Label Content="Garantia"/>
