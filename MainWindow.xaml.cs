@@ -62,6 +62,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1
             RegistroVentas Ventana = new RegistroVentas();
             Ventana.Show();
         }
+        private void ConsultarArticulos_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultaArticulos Ventana = new ConsultaArticulos();
+            Ventana.Show();
+        }
 
         private void ConsultarUsuario_Click(object sender, RoutedEventArgs e)
         {

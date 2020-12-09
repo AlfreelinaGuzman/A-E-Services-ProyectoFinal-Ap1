@@ -27,6 +27,7 @@
                     <MenuItem x:Name="ConsultarVenta" Header="Consultar Ventas " Click="ConsultarVentas_Click"/>
                     <MenuItem x:Name="ConsultarClientes" Header="Consultar Clientes " Click="ConsultarClientes_Click"/>
                     <MenuItem x:Name="ConsultarProveedor" Header="Consultar Proveedor " Click="ConsultarProveedores_Click"/>
+                    <MenuItem x:Name="ConsultarArticulos" Header="Consultar Proveedor " Click="ConsultarArticulos_Click"/>
                     
                 </MenuItem>
             </Menu>
