@@ -133,6 +133,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<string>("Decripcion")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("ITBIS")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Importe")
                         .HasColumnType("TEXT");
 

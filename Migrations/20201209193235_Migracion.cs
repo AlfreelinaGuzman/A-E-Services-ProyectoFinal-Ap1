@@ -162,6 +162,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     Decripcion = table.Column<string>(type: "TEXT", nullable: true),
                     Precio = table.Column<decimal>(type: "TEXT", nullable: false),
                     Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
+                    ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
                     Importe = table.Column<decimal>(type: "TEXT", nullable: false),
                     Monto = table.Column<decimal>(type: "TEXT", nullable: false)
                 },

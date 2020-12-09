@@ -64,7 +64,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 return;
             }
             
-            Compra.ProveedorId = (int) ProveedorIdComboBox.SelectedValue;
+            Compra.ProveedorId = ProveedorIdComboBox.SelectedIndex+1;
             if (ComprasBLL.Guardar(Compra)) {
                 Limpiar();
                 MessageBox.Show("Guardado!" , "Exito" ,
@@ -111,7 +111,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
            
             var filaDetalle = new ComprasDetalles {
                 CompraId = this.Compra.CompraId ,
-                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedIndex) ,
+                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedIndex+1) ,
                 //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text), //Convert.ToInt32(CantidadTextBox.Text)
 

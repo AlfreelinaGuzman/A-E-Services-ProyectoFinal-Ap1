@@ -48,16 +48,17 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
                     foreach (var item in Compra.Detalle)
                     {
                         Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
-                        ArticulosBLL.Guardar(articulo);
+                        
                         articulo.Cantidad += item.Cantidad;
+                        ArticulosBLL.Guardar(articulo);
                     }
                     paso = (contexto.SaveChanges() > 0); 
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -190,6 +191,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             }
             return Compra;
         }
+
+        
 
         public static List<Compras> GetList(Expression<Func<Compras, bool>> criterio)
         {
