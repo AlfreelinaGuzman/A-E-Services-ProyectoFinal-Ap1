@@ -33,11 +33,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
 
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
-            ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
+            ArticuloIdComboBox.DisplayMemberPath = "Descripcion";
 
             ProveedorIdComboBox.ItemsSource = ProveedoresBLL.GetList();
             ProveedorIdComboBox.SelectedValuePath = "ProveedorId";
-            ProveedorIdComboBox.DisplayMemberPath = "ProveedorId";
+            ProveedorIdComboBox.DisplayMemberPath = "Nombres";
 
         }
 private void Limpiar() {
@@ -240,7 +240,7 @@ private void Limpiar() {
             if (!Regex.Match(NCFTextBox.Text, @"^[A-Z]{1}[0-9]{10}$").Success) 
             {
                 Validado = false;
-                Mensaje += "NCF Invalido";
+                Mensaje += "NCF Invalido, debe contener el Primer caracter Mayuscula y 10 caracteres numericos";
             }
 
             if (Validado == false) {

@@ -38,7 +38,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
             ProveedorComboBox.ItemsSource = ProveedoresBLL.GetList();
             ProveedorComboBox.SelectedValuePath = "ProveedorId";
-            ProveedorComboBox.DisplayMemberPath = "Nombres";
+            ProveedorComboBox.DisplayMemberPath = "Descripcion";
         }
 
         private bool Validar()
@@ -48,36 +48,36 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             if (ArticuloIdTextBox.Text.Length == 0)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida, el iD no puede estar vacio", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (Convert.ToInt32(CantidadTextBox.Text)<=0)
+            if (Convert.ToInt32(CantidadTextBox.Text)<1)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida, cantidad no puede ser menor o igual a 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
 
-            if (DescripcionTextBox.Text.Length <= 10)
+            if (DescripcionTextBox.Text.Length <= 3)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida, la desrcripcion es muy corta", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             if (Convert.ToDecimal(CostoTextBox.Text)<=0)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida, el costo no puede ser menos o igaul a 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             if (Convert.ToDecimal(GarantiaTextBox.Text) < 0)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida el la cantidad no puede ser menos o igaul a 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             if (Convert.ToDecimal(ITBIsTextBox.Text) < 0 || Convert.ToDecimal(ITBIsTextBox.Text)>99)
             {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida el ITBIS no puede ser menos o igaul a 0 ni mayor a 99", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
@@ -89,6 +89,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             this.Articulo = new Articulos();
             MarcaComboBox.SelectedIndex = -1;
             ModeloComboBox.SelectedIndex = -1;
+            ProveedorComboBox.SelectedIndex = -1;
             this.DataContext = Articulo;
 
         }
@@ -105,7 +106,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
             MarcaComboBox.SelectedIndex= Articulo.MarcaId;
             ModeloComboBox.SelectedIndex =  Articulo.ModeloId;
-            ProveedorComboBox.SelectedIndex= Articulo.ProveedorId + 1;
+            ProveedorComboBox.SelectedIndex= Articulo.ProveedorId;
             this.DataContext = Articulo;
         }
 
@@ -120,9 +121,10 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         {
             if (!Validar())
                 return;
-            Articulo.MarcaId = MarcaComboBox.SelectedIndex + 1;
-            Articulo.ModeloId = ModeloComboBox.SelectedIndex + 1;
-            Articulo.ProveedorId = ProveedorComboBox.SelectedIndex + 1;
+            Articulo.MarcaId = MarcaComboBox.SelectedIndex ;
+            Articulo.ModeloId = ModeloComboBox.SelectedIndex ;
+            Articulo.ProveedorId = ProveedorComboBox.SelectedIndex;
+            MessageBox.Show(Articulo.ProveedorId.ToString());
             //Articulo.ProveedorId = ComboBox.SelectedIndex;
             //Articulo.ProveedorComboBox.Text = Articulo.ProveedorId;
             var paso = ArticulosBLL.Guardar(Articulo);

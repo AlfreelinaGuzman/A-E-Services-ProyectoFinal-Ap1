@@ -55,7 +55,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida, el nombre de ususario debe tnere entre [5-14] caracteres", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            if (PasswordTextBox.Password.Length > 5|| PasswordTextBox.Password.Length < 19)
+            if (PasswordTextBox.Password.Length < 5|| PasswordTextBox.Password.Length < 19)
             {
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida, La contraseña debe tener un rango de [5-18] ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

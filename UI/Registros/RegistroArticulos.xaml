@@ -45,7 +45,7 @@
 
             <StackPanel Orientation="Vertical">
                 <Label Content="Proveedor"/>
-                <ComboBox x:Name="ProveedorComboBox" Width="300" Text= "{Binding ProveedorId}" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="ProveedorComboBox" Width="300"  HorizontalAlignment="Left"/>
             </StackPanel>
 
             
