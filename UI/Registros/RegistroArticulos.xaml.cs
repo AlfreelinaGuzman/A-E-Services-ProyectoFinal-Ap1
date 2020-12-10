@@ -58,7 +58,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
             
 
-            if (DescripcionTextBox.Text.Length == 0)
+            if (DescripcionTextBox.Text.Length <= 10)
             {
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -69,7 +69,17 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false;
                 MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+            if (Convert.ToDecimal(GarantiaTextBox.Text) < 0)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (Convert.ToDecimal(ITBIsTextBox.Text) < 0 || Convert.ToDecimal(ITBIsTextBox.Text)>99)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
 
             return Validado;
         }

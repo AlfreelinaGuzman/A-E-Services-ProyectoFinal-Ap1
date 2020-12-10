@@ -10,7 +10,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
     {
         [Key]
         public int UsuarioId { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string NombreUsuario { get; set; }

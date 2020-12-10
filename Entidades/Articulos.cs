@@ -10,7 +10,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
     {
         [Key]
         public int ArticuloId { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
         public int ProveedorId { get; set; }
         public int MarcaId { get; set; }
         public int ModeloId { get; set; }

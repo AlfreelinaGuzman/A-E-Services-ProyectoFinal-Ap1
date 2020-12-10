@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,21 +66,26 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false; 
                 Mensaje += "Ingrese el Nombre";
             }
-             if (string.IsNullOrWhiteSpace(CedulaTextBox.Text))
+            if (!Regex.Match(NombresTextBox.Text, @"^[a-zA-Z]+$").Success || Regex.Match(NombresTextBox.Text, @"^[0-9]+$").Success)
+            {
+                Validado = false;
+                Mensaje += "El Nombre es invalido";
+            }
+            if (string.IsNullOrWhiteSpace(CedulaTextBox.Text) || !Regex.Match(CedulaTextBox.Text, @"^\(?\d{3}\)?-? *\d{7}-? *-?\d{1}").Success)
             {
                 Validado = false; 
-                Mensaje += "Ingrese la Cedula";
+                Mensaje += "La Cedula es invalida";
             }
-            if (string.IsNullOrWhiteSpace(TelefonoTextBox.Text))
+            if (string.IsNullOrWhiteSpace(TelefonoTextBox.Text) || !Regex.Match(TelefonoTextBox.Text, @"^\(?\d{3}\)?-? *\d{3}-? *-?\d{4}").Success)
             {
                 Validado = false; 
                 Mensaje += "Ingrese el Telefono";
             }
 
-            if (string.IsNullOrWhiteSpace(CelularTextBox.Text))
+            if (string.IsNullOrWhiteSpace(CelularTextBox.Text)|| (!Regex.Match(CelularTextBox.Text, @"^\(?\d{3}\)?-? *\d{3}-? *-?\d{4}").Success))
             {
                 Validado = false; 
-                Mensaje += "Ingrese la Celular";
+                Mensaje += "Celular esta vacio o invalido";
             }
 
              if (string.IsNullOrWhiteSpace(DireccionTextBox.Text))
@@ -92,10 +99,31 @@ namespace  WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Validado = false; 
                 Mensaje += "Ingrese el Email";
             }
-            if(Validado == false){
+
+            if (!IsValid(EMailTextBox.Text))
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, El Correo no es valido ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (Validado == false){
                 MessageBox.Show(Mensaje, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return Validado; 
+        }
+
+        public bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)

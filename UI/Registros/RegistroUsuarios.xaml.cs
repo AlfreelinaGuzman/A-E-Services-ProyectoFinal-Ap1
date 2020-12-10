@@ -38,7 +38,66 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                  Validado = false; 
                  MessageBox.Show("Transaccion Fallida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            return Validado; 
+            if (!Regex.Match(NombresTextBox.Text, @"^[a-zA-Z]+$").Success|| Regex.Match(NombresTextBox.Text, @"^[0-9]+$").Success || NombresTextBox.Text.Length <= 3 || NombresTextBox.Text.Length >=11)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, Nombre invalido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (!Regex.Match(ApellidosTextBox.Text, @"^[a-zA-Z]+$").Success || Regex.Match(ApellidosTextBox.Text, @"^[0-9]+$").Success || ApellidosTextBox.Text.Length <= 3 || ApellidosTextBox.Text.Length >= 11)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, El apellido es invalido", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (NombreUsuarioTextBox.Text.Length < 4|| NombreUsuarioTextBox.Text.Length >14)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, el nombre de ususario debe tnere entre [5-14] caracteres", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (PasswordTextBox.Password.Length > 5|| PasswordTextBox.Password.Length < 19)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, La contraseña debe tener un rango de [5-18] ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (PasswordTextBox.Password != VerificarContraseñaTextBox.Password)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, Las contraseña s no coinciden ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        
+            if (!Regex.Match(TelefonoTextBox.Text, @"^\(?\d{3}\)?-? *\d{3}-? *-?\d{4}").Success)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, El numero de telefono no es valido ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (!Regex.Match(TelefonoTextBox.Text, @"^\(?\d{3}\)?-? *\d{3}-? *-?\d{4}").Success)
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, El numero de telefono no es valido ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (!IsValid(CorreoTextBox.Text))
+            {
+                Validado = false;
+                MessageBox.Show("Transaccion Fallida, El Correo no es valido ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return Validado;
+            
+        }
+
+        public bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         private void Limpiar(){
@@ -66,6 +125,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e){
             usuarios.Password=PasswordTextBox.Password;
+            if (!Validar())
+                return;
             var paso = UsuariosBLL.Guardar(usuarios);
             if (paso){
                 MessageBox.Show("Guardado Correctamente!");
@@ -91,9 +152,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
 
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("Closing called");
-
-            // If data is dirty, notify user and ask for a response
             
         }
 

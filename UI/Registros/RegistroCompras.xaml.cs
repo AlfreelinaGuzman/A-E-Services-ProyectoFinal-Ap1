@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -132,7 +133,7 @@ private void Limpiar() {
             this.compras.ComprasDetalles.Add(filaDetalle);
             CalcularTotal();
 
-            Actualizar();
+            
             ActualizadGrid();
 
             ArticuloIdComboBox.SelectedIndex = -1;
@@ -236,6 +237,11 @@ private void Limpiar() {
                 Validado = false;
                 Mensaje += "Ingrese el % de Itbis";
             }*/
+            if (!Regex.Match(NCFTextBox.Text, @"^[A-Z]{1}[0-9]{10}$").Success) 
+            {
+                Validado = false;
+                Mensaje += "NCF Invalido";
+            }
 
             if (Validado == false) {
                 MessageBox.Show(Mensaje , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
