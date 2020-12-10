@@ -93,9 +93,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 Limpiar();
 
             }
-            MarcaComboBox.SelectedIndex=Convert.ToInt32(Articulo.MarcaId);
-            ModeloComboBox.SelectedIndex =  Convert.ToInt32(Articulo.ModeloId);
-            ProveedorComboBox.SelectedIndex= Convert.ToInt32(Articulo.ProveedorId);
+            MarcaComboBox.SelectedIndex= Articulo.MarcaId;
+            ModeloComboBox.SelectedIndex =  Articulo.ModeloId;
+            ProveedorComboBox.SelectedIndex= Articulo.ProveedorId + 1;
             this.DataContext = Articulo;
         }
 
@@ -110,9 +110,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         {
             if (!Validar())
                 return;
-            Articulo.MarcaId = Convert.ToInt32(MarcaComboBox.SelectedIndex);
-            Articulo.ModeloId = Convert.ToInt32(ModeloComboBox.SelectedIndex);
-            Articulo.ProveedorId = Convert.ToInt32(ProveedorComboBox.SelectedIndex);
+            Articulo.MarcaId = MarcaComboBox.SelectedIndex + 1;
+            Articulo.ModeloId = ModeloComboBox.SelectedIndex + 1;
+            Articulo.ProveedorId = ProveedorComboBox.SelectedIndex + 1;
+            //Articulo.ProveedorId = ComboBox.SelectedIndex;
+            //Articulo.ProveedorComboBox.Text = Articulo.ProveedorId;
             var paso = ArticulosBLL.Guardar(Articulo);
             if (paso)
             {
