@@ -1,62 +1,62 @@
-using WaoCellDominicana_ProyectoFinal_Ap1.BLL;
-using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
-using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
-using System.ComponentModel; // CancelEComprargs
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WaoCellDominicana_ProyectoFinal_Ap1.BLL;
+using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
+using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
+using WaoCellDominicana_ProyectoFinal_Ap1.UI;
 
-namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
-{
+namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
     /// <summary>
-    /// Interaction logic for RegistroUsuario.xaml
+    /// Interaction logic for RegistroCompras.xaml
     /// </summary>
-    public partial class RegistroCompras : Window
-    {
-        private Compras Compra = new Compras();
-        public RegistroCompras()
+    public partial class RegistroCompras : Window {
+        private Compras compras = new Compras();
+
+        public RegistroCompras() 
         {
             InitializeComponent();
+            this.DataContext = compras;
+
+
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
-            ArticuloIdComboBox.DisplayMemberPath = "Descripcion";
+            ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
 
             ProveedorIdComboBox.ItemsSource = ProveedoresBLL.GetList();
             ProveedorIdComboBox.SelectedValuePath = "ProveedorId";
-            ProveedorIdComboBox.DisplayMemberPath = "Nombres";
-            
-        }
+            ProveedorIdComboBox.DisplayMemberPath = "ProveedorId";
 
-        private void Limpiar() {
-            Compra = new Compras();
-            this.DataContext = Compra;
+        }
+private void Limpiar() {
+            compras = new Compras();
+            this.DataContext = compras;
             ActualizadGrid();
         }
 
         private void Actualizar() {
             this.DataContext = null;
-            this.DataContext = Compra;
+            this.DataContext = compras;
         }
 
         private void ActualizadGrid() {
             DetalleDataGrid.ItemsSource = null;
-            DetalleDataGrid.ItemsSource = Compra.Detalle;
+            DetalleDataGrid.ItemsSource = compras.ComprasDetalles;
         }
         private bool ExisteDB() {
-            Compra = ComprasBLL.Buscar(Convert.ToInt32(CompraIdTextBox.Text));
-            return (Compra != null);
+            compras = ComprasBLL.Buscar(Convert.ToInt32(CompraIdTextBox.Text));
+            return (compras != null);
         }
 
         private void GuardarButton_Click(object sender , RoutedEventArgs e) {
@@ -64,8 +64,8 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 return;
             }
             
-            Compra.ProveedorId = ProveedorIdComboBox.SelectedIndex+1;
-            if (ComprasBLL.Guardar(Compra)) {
+            compras.ProveedorId = (int) ProveedorIdComboBox.SelectedValue;
+            if (ComprasBLL.Guardar(compras)) {
                 Limpiar();
                 MessageBox.Show("Guardado!" , "Exito" ,
                     MessageBoxButton.OK , MessageBoxImage.Information);
@@ -93,34 +93,43 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             Compras anterior = ComprasBLL.Buscar(Convert.ToInt32(CompraIdTextBox.Text));
 
             if (anterior != null) {
-                Compra = anterior;
+                compras = anterior;
                 Actualizar();
                 ActualizadGrid();
             } else {
                 MessageBox.Show("No se encontro");
             }
-            this.DataContext = Compra;
+            this.DataContext = compras;
         }
 
         private void AgregarButton_Click(object sender , RoutedEventArgs e) {
+
             
             if (!int.TryParse(CantidadTextBox.Text, out int cantidad)) {
                 MessageBox.Show("La cantidad no es valida");
                 return;
             }
-           
-            var filaDetalle = new ComprasDetalles {
-                CompraId = this.Compra.CompraId ,
-                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedIndex+1) ,
-                //Articulos = ((Articulos)ArticuloIdComboBox.SelectedItem),
-                Cantidad = Convert.ToInt32(CantidadTextBox.Text), //Convert.ToInt32(CantidadTextBox.Text)
+             if (int.Parse(CantidadTextBox.Text)<= 0)
+            {
+                MessageBox.Show("Ingrese un numero mayor que 0");
+            } 
+             
+             //decimal itbis ;
 
+            var filaDetalle = new ComprasDetalles {
+                CompraId = this.compras.CompraId ,
+                ArticuloId = Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()) ,
+                Costo = Convert.ToDecimal(CostoTextBox.Text) ,
+                Cantidad = Convert.ToInt32(CantidadTextBox.Text) ,
                 ITBIS = Convert.ToDecimal(ITBISTextBox.Text),
                 //PorcientoItbis = Convert.ToDecimal(ITBISTextBox.Text) / 100,
-                Monto = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text) * ((Convert.ToDecimal(ITBISTextBox.Text) / 100) + 1)
+                Monto  = Convert.ToDecimal(CostoTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text) * ((Convert.ToDecimal(ITBISTextBox.Text) / 100)+1)
+                
             };
-           
-            this.Compra.Detalle.Add(filaDetalle);
+            
+           // VentasBLL.RestaCantidad(Convert.ToInt32(ArticuloIdComboBox.SelectedValue.ToString()), Convert.ToInt32(CantidadTextBox.Text));
+
+            this.compras.ComprasDetalles.Add(filaDetalle);
             CalcularTotal();
 
             Actualizar();
@@ -129,12 +138,13 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             ArticuloIdComboBox.SelectedIndex = -1;
             CostoTextBox.Clear();
             CantidadTextBox.Clear();
+            ITBISTextBox.Clear();
         }
 
         private void CalcularTotal() {
-            Compra.Total = 0;
-            foreach (var Compradetalle in Compra.Detalle) {
-                Compra.Total += Compradetalle.Monto;
+            compras.Total = 0;
+            foreach (var ventadetalle in compras.ComprasDetalles) {
+                compras.Total += ventadetalle.Monto;
             }
         }
 
@@ -142,12 +152,14 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             try {
                 decimal total = Convert.ToDecimal(TotalTextBox.Text);
                 if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1) {
-                    Compra.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-                    Compra.Total -= total;
+                    compras.ComprasDetalles.RemoveAt(DetalleDataGrid.SelectedIndex);
+                    //ventas.Total -= total;
+                    CalcularTotal();
+
                     Actualizar();
+
                     DetalleDataGrid.ItemsSource = null;
-                    DetalleDataGrid.ItemsSource = Compra.Detalle;
-                    ComprasBLL.QuitarArticulo(Convert.ToInt32(ArticuloIdComboBox.Text), Convert.ToInt32(CantidadTextBox));
+                    DetalleDataGrid.ItemsSource = compras.ComprasDetalles;
                 }
             } catch {
                 MessageBox.Show("Por favor seleccione una Fila\n\nElija la Fila a Remover.");
@@ -155,7 +167,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
         }
 
         private bool Existe() {
-            Compras esValido = ComprasBLL.Buscar(Compra.CompraId);
+            Ventas esValido = VentasBLL.Buscar(compras.CompraId);
 
             return (esValido != null);
         }
@@ -171,8 +183,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
                 CantidadTextBox.Focus();
             }
         }
-
-   
 
         private void CostoTextBox_TextChanged(object sender , TextChangedEventArgs e) {
             try {
@@ -202,7 +212,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             var articulos = ((ComboBox) sender).Items.CurrentItem as Articulos;
             if (articulos != null) {
                 CostoTextBox.Text = articulos.Costo.ToString();
-                //ITBISTextBox.Text = articulos.ITBIS.ToString();
+                ITBISTextBox.Text = articulos.ITBIs.ToString();
             }
         }
 
@@ -216,27 +226,21 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros
             }
             if (ProveedorIdComboBox.Text.Length == 0) {
                 Validado = false;
-                MessageBox.Show("Transaccion Fallida en Proveedor" , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida en Cliente" , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
             }
             if (string.IsNullOrWhiteSpace(NCFTextBox.Text)) {
                 Validado = false;
                 Mensaje += "Ingrese el NCF";
             }
-            if (string.IsNullOrWhiteSpace(ITBISTextBox.Text)) {
+            /*if (string.IsNullOrWhiteSpace(ITBISTextBox.Text)) {
                 Validado = false;
                 Mensaje += "Ingrese el % de Itbis";
-            }
+            }*/
 
             if (Validado == false) {
                 MessageBox.Show(Mensaje , "Error" , MessageBoxButton.OK , MessageBoxImage.Error);
             }
             return Validado;
         }
-
-        private void DetalleDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
-
 }

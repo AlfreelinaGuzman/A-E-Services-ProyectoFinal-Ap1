@@ -10,16 +10,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Entidades
     {
         [Key]
         public int CompraId { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
         public int ProveedorId { get; set; }
-        public string NCF { get; set; }
-        public decimal SubTotal { get; set; }
-        public decimal TotalITBIs { get; set; }
+        public float NCF { get; set; }
         public decimal Total { get; set; } = 0;
 
         [ForeignKey("CompraId")]
-        public List<ComprasDetalles> Detalle { get; set; } = new List<ComprasDetalles>(); 
+        public List<ComprasDetalles> ComprasDetalles { get; set; } = new List<ComprasDetalles>(); 
         
-
+        [ForeignKey("ProveedorId")]
+        public virtual Proveedores Proveedores { get; set; }
     }
 }

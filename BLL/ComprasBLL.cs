@@ -1,206 +1,178 @@
-using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
-using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
-using System.Windows;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Linq;
+using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
+using WaoCellDominicana_ProyectoFinal_Ap1.Entidades;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
 {
     public class ComprasBLL
     {
-        public static bool Existe(int id)
+        public static bool Guardar(Compras compras)
         {
+            if (!Existe(compras.CompraId))
+                return Insertar(compras);
+            else
+               return Modificar(compras);
+        }
+
+        private static bool Existe(int id)
+        {
+            bool existe;
             Contexto contexto = new Contexto();
-            bool paso = false;
-            try
-            {
-                paso = contexto.Compras.Any(e => e.CompraId == id);
+            try{
+                existe = contexto.Compras.Any(o => o.CompraId== id);
             }
-            catch (Exception)
-            {
+            catch(Exception){
                 throw;
-            }
-            finally
-            {
+
+            } finally{
                 contexto.Dispose();
             }
-            return paso;
+            return existe;
         }
-
-        public static bool Guardar(Compras Compra)
-        {
-            return Insertar(Compra);
-        }
-
-        private static bool Insertar(Compras Compra)
-        {
-            Contexto contexto = new Contexto();
-            bool paso = false;
-            try
-            {
-                if (contexto.Compras.Add(Compra) != null) 
-                {
-                    
-                    foreach (var item in Compra.Detalle)
-                    {
-                        Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
-                        
-                        articulo.Cantidad += item.Cantidad;
-                        ArticulosBLL.Guardar(articulo);
-                    }
-                    paso = (contexto.SaveChanges() > 0); 
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Modificar(Compras Compra)
-        {
-            Contexto contexto = new Contexto();
-            bool paso = false;
-            try
-            {
-                var Anterior = contexto.Compras.Find(Compra.CompraId);
-                foreach (var item in Compra.Detalle)
-                {
-                    Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
-                    articulo.Cantidad -= item.Cantidad;
-                    ArticulosBLL.Guardar(articulo);
-                }
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProductosDetalle Where TareaId={Compra.CompraId}");
-
-                foreach (var item in Compra.Detalle)
-                {
-                    contexto.Entry(item).State = EntityState.Added;
-                }
-                foreach (var item in Compra.Detalle)
-                {
-                    Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
-                    articulo.Cantidad += item.Cantidad;
-                    ArticulosBLL.Guardar(articulo);
-                }
-                paso = (contexto.SaveChanges() > 0);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Eliminar(int id)
-        {
-            Contexto contexto = new Contexto();
-            bool paso = false;
-            try
-            {
-                var Compra = contexto.Compras.Find(id);
-                if (Compra != null)
-                {
-                    foreach (var item in Compra.Detalle)
-                    {
-                        Articulos articulo = ArticulosBLL.Buscar(item.ArticuloId);
-                        articulo.Cantidad -= item.Cantidad;
-                        ArticulosBLL.Guardar(articulo);
-                    }
-                    contexto.Compras.Remove(Compra);
-                    paso = (contexto.SaveChanges() > 0);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-        public static void AgregarArticulo(int articuloId, int cantidad)
-        {
-            try
-            {
-                Articulos Articulo = ArticulosBLL.Buscar(articuloId);
-                Articulo.Cantidad += cantidad;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                //contexto.Dispose();
-            }
-        }
-
-        public static void QuitarArticulo(int articuloId, int cantidad)
-        {
-            try
-            {
-                Articulos Articulo = ArticulosBLL.Buscar(articuloId);
-                Articulo.Cantidad += cantidad;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                //contexto.Dispose();
-            }
-        }
-        public static Compras Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
-            Compras Compra = new Compras();
-            try
-            {
-                Compra = contexto.Compras.Include(x => x.Detalle)
-                    .Where(x => x.CompraId == id)
-                    .SingleOrDefault();
-                if (Compra == null)
-                {
-                    MessageBox.Show("Esta compra no existe.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return Compra;
-        }
-
         
-
-        public static List<Compras> GetList(Expression<Func<Compras, bool>> criterio)
+        private static bool Insertar(Compras compras)
         {
+            bool paso = false;
             Contexto contexto = new Contexto();
-            List<Compras> Lista = new List<Compras>();
             try
             {
-                Lista = contexto.Compras.Where(criterio).ToList();
+                contexto.Compras.Add(compras);
+                paso = contexto.SaveChanges() > 0;
+
+                if (paso)
+                {
+                    foreach (var comprdetalle in compras.ComprasDetalles)
+                    {
+
+                        var articulo = ArticulosBLL.Buscar(comprdetalle.ArticuloId);
+
+                        if(articulo != null){
+                            articulo.Cantidad += comprdetalle.Cantidad;
+                            ArticulosBLL.Modificar(articulo);
+                        }
+
+                       //Articulos articulo = ArticulosBLL.Buscar(articulo.ArticuloId);
+                        
+                       // articulo.Cantidad += articulo.Cantidad;
+                      //  ArticulosBLL.Guardar(articulo);
+                    }
+
+                }
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
+
+        public static bool Modificar(Compras compras){
+            bool Modificado = false;
+            Contexto contexto = new Contexto();
+            try{
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalles Where CompraId={compras.CompraId}");
+                foreach (var anterior in compras.ComprasDetalles)
+                {
+                    contexto.Entry(anterior).State = EntityState.Added;
+                }
+                
+                contexto.Entry(compras).State = EntityState.Modified;
+                Modificado = (contexto.SaveChanges()>0);
+
+                if (Modificado)
+                {
+
+                    foreach (var comprdetalle in compras.ComprasDetalles)
+                    {
+                        if(comprdetalle.Id == 0){
+                            var articulo = ArticulosBLL.Buscar(comprdetalle.ArticuloId);
+
+                            if(articulo != null){
+                                articulo.Cantidad += comprdetalle.Cantidad;
+                                ArticulosBLL.Modificar(articulo);
+                            }
+                        }
+                    
+                    }
+                }
+            }
+            catch(Exception){
+                throw;
+               
+            } finally{
+                contexto.Dispose();
+            }
+            return Modificado;
+        }
+
+        public static bool Eliminar(int id){
+            bool Eliminado = false;
+            Contexto contexto = new Contexto();
+            try{
+                var compras = contexto.Compras.Find(id);
+                contexto.Entry(compras).State = EntityState.Deleted;
+                Eliminado = contexto.SaveChanges()>0;
+
+                if (Eliminado)
+                {
+                    foreach (var comprdetalle in compras.ComprasDetalles)
+                    {
+                        var articulo = ArticulosBLL.Buscar(comprdetalle.ArticuloId);
+
+                        if(articulo != null){
+                            articulo.Cantidad -= comprdetalle.Cantidad;
+                            ArticulosBLL.Modificar(articulo);
+                        }
+                    
+                    }
+
+                }
+            }
+
+            catch(Exception){
+                throw;
+               
+            } finally{
+                contexto.Dispose();
+            }
+            return Eliminado;
+        }
+
+        public static Compras Buscar(int id){
+            Compras compras;
+            Contexto contexto = new Contexto();
+            try{
+                compras = contexto.Compras.Include(x => x.ComprasDetalles).Where(p => p.CompraId  == id).SingleOrDefault();
+            }
+            catch(Exception){
+                throw;
+               
+            } finally{
+                contexto.Dispose();
+            }
+            return compras;
+        }
+
+   
+    public static List <Compras> GetList()
+     {
+            List<Compras> Lista = new List<Compras>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                Lista = contexto.Compras.ToList();
             }
             catch (Exception)
             {
@@ -212,5 +184,28 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.BLL
             }
             return Lista;
         }
+
+        public static List<Compras> GetList(Expression<Func<Compras, bool>> compras)
+        {
+            List<Compras> Lista = new List<Compras>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                Lista = contexto.Compras.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return Lista;
+        }
+
+  //  }
+
     }
 }

@@ -79,7 +79,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20,0,0,0" >
-                            <Label Content="ITBIS" HorizontalAlignment="Center"/>
+                            <Label Content="%ITBIS" HorizontalAlignment="Center"/>
                             <TextBox x:Name="ITBISTextBox" IsReadOnly="True" Height="20" Width="70" TextChanged="ITBISTextBox_TextChanged" />
                         </StackPanel>
 
@@ -94,7 +94,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ArticuloId" Binding="{Binding ArticuloId}"/>
                                     <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
-                                    <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}"/>
+                                    <DataGridTextColumn Header="%ITBIS" Binding="{Binding ITBIS}"/>
                                     <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
                                     <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
                                 </DataGrid.Columns>

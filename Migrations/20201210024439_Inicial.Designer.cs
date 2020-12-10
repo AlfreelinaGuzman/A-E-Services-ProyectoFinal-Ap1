@@ -9,8 +9,8 @@ using WaoCellDominicana_ProyectoFinal_Ap1.DAL;
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201209193235_Migracion")]
-    partial class Migracion
+    [Migration("20201210024439_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,29 +97,25 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NCF")
-                        .HasColumnType("TEXT");
+                    b.Property<float>("NCF")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("ProveedorId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("SubTotal")
-                        .HasColumnType("TEXT");
-
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("TotalITBIs")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("CompraId");
+
+                    b.HasIndex("ProveedorId");
 
                     b.ToTable("Compras");
                 });
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.ComprasDetalles", b =>
                 {
-                    b.Property<int>("ComprasDetalleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -132,22 +128,16 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.Property<int>("CompraId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Decripcion")
+                    b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("ITBIS")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Importe")
-                        .HasColumnType("TEXT");
-
                     b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ComprasDetalleId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CompraId");
 
@@ -380,10 +370,21 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                     b.ToTable("VentasDetalle");
                 });
 
+            modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", b =>
+                {
+                    b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Proveedores", "Proveedores")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proveedores");
+                });
+
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.ComprasDetalles", b =>
                 {
                     b.HasOne("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", null)
-                        .WithMany("Detalle")
+                        .WithMany("ComprasDetalles")
                         .HasForeignKey("CompraId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -411,7 +412,7 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Compras", b =>
                 {
-                    b.Navigation("Detalle");
+                    b.Navigation("ComprasDetalles");
                 });
 
             modelBuilder.Entity("WaoCellDominicana_ProyectoFinal_Ap1.Entidades.Ventas", b =>

@@ -105,11 +105,15 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.UI.Registros {
 
         private void AgregarButton_Click(object sender , RoutedEventArgs e) {
 
-            
+           
             if (!int.TryParse(CantidadTextBox.Text, out int cantidad)) {
-                MessageBox.Show("La cantidad no es valida");
+                    MessageBox.Show("La cantidad no es valida");
                 return;
             }
+             if (int.Parse(CantidadTextBox.Text)<= 0)
+            {
+                MessageBox.Show("Ingrese un numero mayor que 0");
+            } 
              
              //decimal itbis ;
 

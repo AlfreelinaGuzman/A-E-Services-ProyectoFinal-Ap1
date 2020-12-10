@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 {
-    public partial class Migracion : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,24 +45,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clientes", x => x.ClienteId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Compras",
-                columns: table => new
-                {
-                    CompraId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    NCF = table.Column<string>(type: "TEXT", nullable: true),
-                    SubTotal = table.Column<decimal>(type: "TEXT", nullable: false),
-                    TotalITBIs = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Total = table.Column<decimal>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Compras", x => x.CompraId);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,28 +134,24 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ComprasDetalles",
+                name: "Compras",
                 columns: table => new
                 {
-                    ComprasDetalleId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CompraId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CompraId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Decripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    Precio = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
-                    ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Importe = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Monto = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    NCF = table.Column<float>(type: "REAL", nullable: false),
+                    Total = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ComprasDetalles", x => x.ComprasDetalleId);
+                    table.PrimaryKey("PK_Compras", x => x.CompraId);
                     table.ForeignKey(
-                        name: "FK_ComprasDetalles_Compras_CompraId",
-                        column: x => x.CompraId,
-                        principalTable: "Compras",
-                        principalColumn: "CompraId",
+                        name: "FK_Compras_Proveedores_ProveedorId",
+                        column: x => x.ProveedorId,
+                        principalTable: "Proveedores",
+                        principalColumn: "ProveedorId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -199,6 +177,30 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                         column: x => x.VentaId,
                         principalTable: "Ventas",
                         principalColumn: "VentaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComprasDetalles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CompraId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Costo = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
+                    ITBIS = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Monto = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComprasDetalles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalles_Compras_CompraId",
+                        column: x => x.CompraId,
+                        principalTable: "Compras",
+                        principalColumn: "CompraId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -268,6 +270,11 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                 values: new object[] { 1, null, "Admin@admin.com", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin", "Manager", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", null });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Compras_ProveedorId",
+                table: "Compras",
+                column: "ProveedorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalles_CompraId",
                 table: "ComprasDetalles",
                 column: "CompraId");
@@ -298,9 +305,6 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
                 name: "Modelos");
 
             migrationBuilder.DropTable(
-                name: "Proveedores");
-
-            migrationBuilder.DropTable(
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
@@ -311,6 +315,9 @@ namespace WaoCellDominicana_ProyectoFinal_Ap1.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ventas");
+
+            migrationBuilder.DropTable(
+                name: "Proveedores");
 
             migrationBuilder.DropTable(
                 name: "Clientes");
